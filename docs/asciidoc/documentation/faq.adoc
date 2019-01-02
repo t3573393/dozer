@@ -1,203 +1,135 @@
 :dozer-version: 6.5.0-SNAPSHOT
 
-== Frequently Asked Questions
-=== Common
-* link:#dataobject-support[What types of data objects are supported?]
-* link:#datatype-conversions[Will Dozer automatically perform data type
-conversions?]
-* link:#auto-property-name[Does Dozer automatically map fields with
-matching property names?]
-* link:#is-recursive[Is Dozer recursive?]
-* link:#are-getset-invoked[Will the getter and setter methods be invoked
-when fields are mapped?]
-* link:#are-collections-supported[Are Collections and Arrays supported?]
-* link:#are-maps-supported[Are Map type objects(i.e HashMap) supported?]
-* link:#is-inheritance-supported[Are abstract classes, inheritance, and
-interface mapping supported?]
-* link:#is-spring-supported[Can Dozer be configured via Spring?]
-* link:#what-type-custom-mapping[Which types of data mappings do I need
-a custom xml mapping definition for?]
-* link:#matching-prop-names[If my src and dest object have all matching
-attribute names, do I need to specify any xml mapping definitions at
-all?]
-* link:#is-bidirectional[For mappings that require an xml mapping
-definition, is the mapping definition bi-directional, or do I need 2 xml
-definitions if I need to map the two objects both ways?]
-* link:#how-xml-loaded[How are the custom xml mapping files loaded?]
-* link:#how-to-load-file[Can I load a mapping file that is not in the
-classpath?]
-* link:#dozer-debug[How can I tell if Dozer is initializing correctly
-and loading my xml mapping files?]
-* link:#dozer-perf[How does Dozer perform?]
-* link:#jdk-support[Which JDK versions are supported?]
-* link:#maven-repo[Is Dozer in the maven repository?]
-* link:#good-environment[Is Dozer good for the environment?]
+== 常见问题
+=== 常用
+* link:#dataobject-support[什么类型的数据对象被支持?]
+* link:#datatype-conversions[Dozer会进行自动数据类型转化吗?]
+* link:#auto-property-name[Dozer会自动对属性名称匹配的域进行映射吗?]
+* link:#is-recursive[Dozer 是递归的吗?]
+* link:#are-getset-invoked[getter和 setter方法在域进行映射的时候会被调用吗?]
+* link:#are-collections-supported[集合和数组类型被支持吗?]
+* link:#are-maps-supported[映射类型对象被支持吗?]
+* link:#is-inheritance-supported[抽象类，继承和接口映射是否被支持?]
+* link:#is-spring-supported[Dozer能够通过spring进行配置吗?]
+* link:#what-type-custom-mapping[什么类型的数据映射需要自定义xml的映射文件?]
+* link:#matching-prop-names[如果我的源和目标对象包含所有匹配的属性名称，我还需要任何xml映射定义吗?]
+* link:#is-bidirectional[针对需要xml映射文件定义的映射是否是双向的，或者还需要我定义第二个xml文件进行另外一个方向的映射?]
+* link:#how-xml-loaded[自定义xml映射文件是如何加载的?]
+* link:#how-to-load-file[我如何加载一个不在classpath中的映射文件?]
+* link:#dozer-debug[我如何知道Dozer是否已经正确的初始化和加载我的xml映射文件的?]
+* link:#dozer-perf[Dozer是如何工作的?]
+* link:#jdk-support[那个版本的JDK被支持?]
+* link:#maven-repo[Dozer在maven仓库吗?]
+* link:#good-environment[Dozer对环境友好吗?]
 
-=== Advanced
-* link:#custom-converters[Can I implement custom mapping logic between 2
-data types and have Dozer invoke this custom logic when it's performing
-mappings?]
-* link:#deep-mapping[Can I map one field into another field that is
-nested n layers deep in the destination object?]
-* link:#mult-fields-to-single-field[How do I map multiple fields to a
-single field?]
-* link:#infinite-loop[If I am mapping data objects that have
-bi-directional relationships, will it result in an infinite loop and
-eventual stack overflow error?]
-* link:#index-mapping[How do I map an object contained in a collection
-to a field?]
-* link:#complex-to-map[How do I map a Complex object to a HashMap and
-vice versa?]
-* link:#is-accessible[How do I map fields that don't have corresponding
-getter/setter methods?]
-* link:#private-constructors[Some of my data objects don't have public
-constructors. Does Dozer support this use case?]
-* link:#enum-support[Does Dozer support JDK 1.5 enums?]
-* link:#jaxb[Does Dozer support JAXB generated data objects?]
-* link:#eclipse-plugin[Is there an Eclipse plugin or visual editor for
-Dozer?]
-* link:#collection-hints[When mapping collections, how do I tell Dozer
-what type of data objects I want in the destination collection?]
-* link:#bypass-null[How can I tell Dozer to bypass mapping null or empty
-string values?]
+=== 高级
+* link:#custom-converters[我如何实现在两个数据类型中进行自定义的映射逻辑，Dozer在进行映射的时候如何调用自定义的逻辑?]
+* link:#deep-mapping[我是否可以映射一个域到另外一个在目标对象n层深的域?]
+* link:#mult-fields-to-single-field[我如何映射多个域到一个独立的域?]
+* link:#infinite-loop[如果我映射的数据对象包含双向的关系，其是否会导致一个死循环和堆栈溢出的错误?]
+* link:#index-mapping[我如何映射一个集合中的对象到一个域?]
+* link:#complex-to-map[我如何映射复杂的队形到哈希列表和反向处理?]
+* link:#is-accessible[我如何映射不包含对应getter/setter方法的域?]
+* link:#private-constructors[我的一些数据对象不包含公开的构造函数，Dozer是否支持这种案例?]
+* link:#enum-support[Dozer 支持 JDK 1.5的枚举类型吗?]
+* link:#xmlbeans-jaxb[Dozer 支持 XMLBeans和JAXB生成的数据对象吗?]
+* link:#eclipse-plugin[是否包含支持Dozer的 Eclipse 插件或可视化编辑器?]
+* link:#collection-hints[当映射集合的时候，我如何告诉Dozer我需要映射的目标集合的数据类型?]
+* link:#bypass-null[我如何告诉Dozer忽略映射 null 或空的字符串值?]
 
-=== Tips, Tricks, and Suggestions
-* link:#encapsulation[Should I encapsulate logic that copies data
-between objects?]
-* link:#dozer-unit-tests[Should I write unit tests for data mapping
-logic that I use Dozer to perform?]
-* link:#config-as-singleton[Should the Dozer mapper be configured as a
-Singleton?]
-* link:#component-mappings[Is it better to have 1 large xml mapping file
-or to have multiple smaller mapping files?]
-* link:#debugging-dozer[What are the best ways to debug Dozer?]
-* link:#global-config[What is the best way to setup the global
-configuration?]
-* link:#submitting-support-request[What is the best way to submit a bug,
-feature request, or patch?]
+=== 提示，小技巧和建议
+* link:#encapsulation[我是否需要封装对象间复制数据的逻辑?]
+* link:#dozer-unit-tests[我是否需要为使用Dozer进行处理的映射逻辑编写单元测试?]
+* link:#config-as-singleton[Dozer映射器是否需要配置成单例?]
+* link:#component-mappings[包含一个大的xml映射文件或包含多个小的映射文件，哪种方式好?]
+* link:#debugging-dozer[调试Dozer的最好方式是什么?]
+* link:#global-config[设定全局配置的最好方式是什么?]
+* link:#submitting-support-request[提交bug，功能请求或补丁的最佳方式是什么?]
 
-=== Answers
+=== 回答
 [[dataobject-support]]
-=== What types of data objects are supported?
-Dozer uses reflection to access data object properties, so it is
-designed to work with data objects that have corresponding getter and
-setter methods for its fields. For example, a data object that has a
-field named "message" should have getMessage and setMessage methods.
-Data objects that don't follow this pattern are also supported, but will
-most likely require a custom mapping definition. For these unorthodox
-data objects, you can tell Dozer to directly access fields(including
-private) and/or explicitly specify which get/set methods to use.
+=== 什么类型的数据对象被支持?
+Dozer 使用反射获取数据对象的属性，因此其被设计为在数据对象中包含有getter和setter方法的域属性可以工作。
+例如，一个数据对象包含一个域，名称为message,应该包含 getMessage 和 setMessage 方法。
+数据对象不包含这种模式的也能够被支持，但是这需要一个自定义的映射定义。
+对于不正确使用的数据对象，你可以告诉Dozer直接操作域（包括私有属性）和/或显式的定义get/set方法来使用。
 
 [[datatype-conversions]]
-=== Will Dozer automatically perform data type conversions?
-Yes. Most scenarios are supported out of the box. These include
-primitives, Java Wrapper Objects, Number subclasses, Dates, Calendar,
-Collections, Arrays, Maps, and Complex types
+=== Dozer会进行自动数据类型转化吗?
+是的。大多数场景都是开箱即用的。这包括原生类型、java包装对象、Number的子类型、日期、日历、集合、数组、列表和复杂的类型。
 
 [[auto-property-name]]
-=== Does Dozer automatically map fields with matching property names?
-Yes. All fields with matching property names are implicitly mapped. It
-would be atypical usage, but you could suppress this behavior by setting
-wilcard="false".
+=== Dozer会自动对属性名称匹配的域进行映射吗?
+是的。所有的匹配属性名称相同的域都会隐式被映射。
+这是一个较为传统的用法，你可以通过设定wilcard="false"来关闭这种行为。
 
 [[is-recursive]]
-=== Is Dozer recursive?
-Yes. Dozer recursively maps the entire object graph for all fields.
+=== Dozer 是递归的吗?
+是的。Dozer递归的映射整个对象图中的所有域。
 
 [[are-getset-invoked]]
-=== Will the getter and setter methods be invoked when fields are mapped?
-Yes. You can bypass this default behavior by explicitly specifying
-is-accessible="true" for any of your mappings. If is-accessible is
-specified, the field(including private fields) is accessed directly and
-the getter/setter methods are bypassed. It is not recommended that you
-set is-accessible="true", unless you are dealing with an unorthodox data
-object that does not contain any getter or setter methods.
+=== getter和 setter方法在域进行映射的时候会被调用吗?
+是的。你可以在你的任何映射中忽略该缺省的行为通过显式的设定 is-accessible="true"。如果 is-accessible被定义，域(包括私有域)将被直接操作，
+getter/setter 方法将被忽略。不建议你设定 is-accessible="true", 除非你要处理不正规的数据对象，其不包含任何 getter 或 setter方法。
 
 [[are-collections-supported]]
-=== Are Collections and Arrays supported?
-Yes. Dozer automatically maps between collection types and automatically
-performs any type conversion.
+=== 集合和数组类型被支持吗?
+是的。Dozer 自动映射集合类型，自动进行类型转化。
 
 [[are-maps-supported]]
-=== Are Map type objects(i.e HashMap) supported?
-Yes. All Java Map data types are supported in addition to any Custom map
-data types.
+=== 映射类型对象被支持吗?
+是的。所有的java 映射数据类型都支持，此外自定义映射数据类型也支持。
 
 [[is-inheritance-supported]]
-=== Are abstract classes, inheritance, and interface mapping supported?
-Yes.
+=== 抽象类，继承和接口映射是否被支持?
+是的。
 
 [[is-spring-supported]]
-=== Can Dozer be configured via Spring?
-Yes. Refer to link:springintegration.adoc[Spring Integration] section of
-the documentation.
+=== Dozer能够通过spring进行配置吗?
+是的。可以查看 link:springintegration.adoc[Spring 集成] 章节的文档。
 
 [[what-type-custom-mapping]]
-=== Which types of data mappings do I need a custom xml mapping definition for?
-Only fields that can't be implicitly mapped by matching on field name,
-need a custom xml mapping definition. Ideally, the vast majority of your
-field mappings can be performed automatically and only the few
-exceptional cases will need an explicit field mapping in the xml mapping
-file.
+=== 什么类型的数据映射需要自定义xml的映射文件?
+只有不能基于域名的隐式映射的域需要一个自定义XML 映射定义。
+理想情况下，大多数你的域映射可以自动进行，只有很少例外案例需要在xml映射文件中显式的域映射。
 
 [[matching-prop-names]]
-=== If my src and dest object have all matching attribute names, do I need to specify any xml mapping definitions at all?
-Nope. Just invoke the mapper. You don't need any explicit xml mapping
-entries for this combination of source and destination object.
+=== 如果我的源和目标对象包含所有匹配的属性名称，我还需要任何xml映射定义吗?
+不需要了。只要调用映射器就可以。你不需要任何显式的xml映射项在这个源和目标对象组合上。
 
 [[is-bidirectional]]
-=== For mappings that require an xml mapping definition, is the mapping definition bi-directional, or do I need 2 xml definitions if I need to map the two objects both ways?
-All mapping definitions are bi-directional, so you only need one mapping
-definition. You can map a --> b and b--> a using this single mapping
-definition.
+=== 针对需要xml映射文件定义的映射是否是双向的，或者还需要我定义第二个xml文件进行另外一个方向的映射?
+所有的映射定义都是双向的，因此你只需要一个映射定义。你可以映射 a --> b 和 b--> a 使用单独一个映射定义。
 
 [[how-xml-loaded]]
-=== How are the custom xml mapping files loaded?
-Dozer will search the entire classpath looking for the specified
-file(s).
+=== 自定义xml映射文件是如何加载的?
+Dozer 将会搜索整个 classpath 路径来查找所定义的文件。
 
 [[how-to-load-file]]
-=== Can I load a mapping file that is not in the classpath?
-Yes, you can load files from outside the classpath by prepending "file:"
-to the resource name. Ex) "file:c:\somedozermapping.xml"
+=== 我如何加载一个不在classpath中的映射文件?
+是的，你可以在classpath外部载入文件，通过加入 "file:" 前缀到资源名称。 例如) "file:c:\somedozermapping.xml"
 
 [[dozer-debug]]
-=== How can I tell if Dozer is initializing correctly and loading my xml mapping files?
-Set the -Ddozer.debug system property. If this is set, Dozer
-initialization information is also sent to System.out. If you are
-familiar with log4j, this is similar to the -Dlog4j.debug system
-property
+=== 我如何知道Dozer是否已经正确的初始化和加载我的xml映射文件的?
+设定 -Ddozer.debug 系统属性。如果这个属性被设定了，Dozer的初始化信息将被发送到 System.out。如果你熟悉 log4j, 这个操作类似与设定 -Dlog4j.debug 系统属性。
 
 [[dozer-perf]]
-=== How does Dozer perform?
-We believe Dozer performs very well and performance is a high priority
-for us. We have spent a significant amount of time profiling the code
-and optimizing bottlenecks.
+=== Dozer是如何工作的?
+我们坚信Dozer运行得很好，性能是我们的高优先级要求。我们花费了大量的时间来调优代码和优化瓶颈。
 
-Performance is going to depend on the complexity of the use case and the
-number of fields mapped. In our performance tests for "average" mapping
-scenarios, the class mapping times vary from 1/8 of a millisecond to 2
-milliseconds. This roughly equates to 50 - 450 field mappings per
-millisecond. However, the number of variables in any decent benchmark
-makes it almost impossible to transfer these results into reasonable
-conclusions about the performance of your own application. Your
-application is different and you will have unique use cases.
+性能开销取决域使用场景的复杂性和所需要映射的域数目。在我们平均的映射场景中的性能测试，类映射花费的时间从1/8毫秒到2毫秒之间。
+粗略的估计每毫秒能够映射大约 50 - 450 个域。然而在任何正式基准下的参数都不可能转化为你自己应用中的可信赖的结果。你的应用程序是不同的，你包含有自己独特的用例。
 
-Dozer has been successfully implemented on large, very high
-transactional enterprise systems, without any resulting performance
-issues. But we always recommend that you run performance tests on your
-application to determine the actual performance costs within your
-system. You can decide for yourself whether those costs are acceptable
-in the context of the entire system.
+Dozer已经成功应用于大型的和非常高事务量的企业系统中，没有带来任何性能问题。
+但是我们任何建议在你的应用中运行性能测试，来确定你系统中真实性能开销。你可以自己决定这些开销是否在整个系统上下文中是否可接受。
 
 [[jdk-support]]
-=== Which JDK versions are supported?
-JDK 1.8 and above.
+=== 那个版本的JDK被支持?
+JDK 1.8 或者更高。
 
 [[maven-repo]]
-=== Is Dozer in the maven repository?
-Yes and we will continue to do our best to get future releases of Dozer
-uploaded into the repository.
+=== IDozer在maven仓库吗?
+是的，我们将继续尽最大的努力来发布Dozer未来的版本到仓库中。
 
 [source,xml,prettyprint]
 ----
@@ -209,19 +141,14 @@ uploaded into the repository.
 ----
 
 [[good-environment]]
-=== Is Dozer good for the environment?
-Yes, dozer does not burn any fossil fuels and is within the EPA's
-recommended emissions.
+=== Dozer对环境友好吗?
+是的，dozer不燃烧化石燃料，以及符合 EPA的推荐排放标准。
 
 [[custom-converters]]
-=== Can I implement custom mapping logic between 2 data types and have Dozer invoke this custom logic when it's performing mappings?
-Yes. A very useful feature provided by Dozer is the concept of custom
-converters. Custom converters are used to perform custom mapping between
-two objects. In the Configuration block, you can add some XML to tell
-Dozer to use a custom converter for certain class A and class B types.
-When a custom converter is specified for a class A and class B
-combination, Dozer will invoke the custom converter to perform the data
-mapping instead of the standard mapping logic.
+=== 我如何实现在两个数据类型中进行自定义的映射逻辑，Dozer在进行映射的时候如何调用自定义的逻辑?
+是的，一个非常有用的Dozer特性，提供了一个自定义转化器的概念。自定义转化器用于进行自定义的两个对象之间的映射。
+在配置块中，你可以添加一些自己的xml来告诉Dozer来进行自定义的确定A类和B类的转化器。
+当类A和类B的组合中定义了自定义转化器，Dozer将会调用自定义转化器进行数据映射而不是标准的映射逻辑。
 
 [source,xml,prettyprint]
 ----
@@ -234,9 +161,8 @@ mapping instead of the standard mapping logic.
 ----
 
 [[deep-mapping]]
-=== Can I map one field into another field that is nested n layers deep in the destination object?
-Yes. Dozer supports dot notation for nested fields. As with other dozer
-field mappings, these are bi-directional.
+=== 我是否可以映射一个域到另外一个在目标对象n层深的域?
+是的。Dozer支持使用点注释来标记嵌套域。正如其他的dozer域映射一样，他们都是双向的。
 
 [source,xml,prettyprint]
 ----
@@ -247,23 +173,16 @@ field mappings, these are bi-directional.
 ----
 
 [[mult-fields-to-single-field]]
-=== How do I map multiple fields to a single field?
-Dozer doesn't currently support this. And because of the complexities
-around implementing it, this feature is not currently on the road map. A
-possible solution would be to wrap the multiple fields in a custom
-complex type and then define a custom converter for mapping between the
-complex type and the single field. This way, you could handle the custom
-logic required to map the three fields into the single one within the
-custom converter.
+=== 我如何映射多个域到一个独立的域?
+Dozer目前不支持这个。由于其中实现它的复杂性，这个特性当前也不在既定目标图中。一个可能的解决方案是包装多个域到一个自定义的复杂类型中，然后定义一个自定义映射器来映射复杂类型和独立的域。通过这种方式，你可以在映射器中处理自定义的逻辑来映射三个域到一个简单的域。
 
 [[infinite-loop]]
-=== If I am mapping data objects that contain bi-directional relationships, will it result in an infinite loop and eventual stack overflow error?
-No. Dozer has built in logic that prevents infinite loops for
-bi-directional data object relationships
+=== 如果我映射的数据对象包含双向的关系，其是否会导致一个死循环和堆栈溢出的错误?
+不，Dozer会使用避免死循环的逻辑来处理双向的数据对象关系。
 
 [[index-mapping]]
-=== How do I map an object contained in a collection to a field?
-You would use indexed based mapping.
+=== 我如何映射一个集合中的对象到一个域?
+你可以使用带下标的映射。
 
 [source,xml,prettyprint]
 ----
@@ -274,14 +193,10 @@ You would use indexed based mapping.
 ----
 
 [[complex-to-map]]
-=== How do I map a Complex object to a HashMap and vice versa?
-You can map entire complex objects directly to a java.util.Map and vice
-versa. When doing this you need to explicitly define a unique map-id for
-the mapping. This is used when determining which map to use at run-time.
-Every attribute on the complex type will be mapped to the java.util.Map.
-You DO NOT need to explicitly define these mappings. If the attribute
-name is not the same as the map key just set the key attribute for a
-custom field mapping.
+=== 我如何映射复杂的队形到哈希列表和反向处理?
+你可以直接映射整个复杂的对象到 java.util.Map，或反向。
+当你这样做的时候你需要显式的定义一个唯一的 map-id来标识整个映射。这将被用作确定运行时哪个映射被使用。
+每一个复杂类型上的属性都将被映射到 java.util.Map。你不需要显式的定义这些映射。如果属性名称不是map的键，只需要设定一个自定义域映射的键属性。
 
 [source,xml,prettyprint]
 ----
@@ -296,9 +211,8 @@ custom field mapping.
 ----
 
 [[is-accessible]]
-=== How do I map fields that don't have corresponding getter/setter methods?
-You can tell Dozer to directly access fields(including private fields)
-by specifying is-accessible="true"
+=== 我如何映射不包含对应getter/setter方法的域?
+你可以告诉Dozer直接使用域(包括私有方法)，通过指定 is-accessible="true"。
 
 [source,xml,prettyprint]
 ----
@@ -309,40 +223,30 @@ by specifying is-accessible="true"
 ----
 
 [[private-constructors]]
-=== Some of my data objects don't have public constructors. Does Dozer support this use case?
-Yes. When creating a new instance of the destination object if a public
-no-arg constructor is not found, Dozer will auto detect a private
-constructor and use that. If the data object does not have a private
-constructor, you can specify a custom BeanFactory for creating new
-instances of the destination object.
+=== 我的一些数据对象不包含公开的构造函数，Dozer是否支持这种案例?
+是的。当你创建的一个目标新对象没有包含公开的无参数构造函数，dozer将会自动检测到一个私有的构造函数来使用。
+当一个数据对象没有包含私有的构造函数，你可以定义一个自定义的beanfactory来创建一个目标对象的新实例。
 
 [[enum-support]]
-=== Does Dozer support JDK 1.5 enums?
-Yes. Enum to Enum mapping is automatically handled.
+=== Dozer 支持 JDK 1.5的枚举类型吗?
+是的。枚举到枚举的映射是自动处理的。
 
-[[jaxb]]
-=== Does Dozer support JAXB generated data objects?
-Dozer has support for mapping POJOs to JAXB objects. Use the
-JAXBBeanFactory for any JAXB objects you want created.
+[[xmlbeans-jaxb]]
+=== Dozer 支持 XMLBeans和JAXB生成的数据对象吗?
+Dozer支持映射POJOs到 XMLBeans 对象。使用XMLBeanFactory来处理你所想创建的任何XMLBeans。
+这个工厂也可以被使用作映射任何在深度映射需要实例化的域，其中不是常规的POJOS,而是XMLBeans。
+
+Dozer也支持映射POJOS到JAXB对象。使用JAXBBeanFactory来处理任何你想创建的JAXB对象。
 
 [[eclipse-plugin]]
-=== Is there an Eclipse plugin or visual editor for Dozer?
-No, but we think it would be a great addition. It would be very powerful
-to be able to graphically map 2 objects and have the custom xml
-definitions auto generated, along with being able to visually view a
-mapping definition. If anyone has expertise in creating eclipse plugins
-and is interested on working on this feature, please let us know!
+=== 是否包含支持Dozer的 Eclipse 插件或可视化编辑器?
+不，但是我们认为其是一个很好的附加品。它将有助于图形化的映射两个对象，可以有自定义xml定义的自动生成，伴随这能够可视化的查看一个映射定义。如果任何人在创建eclipse 插件可视化上有经验，并且有兴趣来做这个特性，请让我们知道!
 
 [[collection-hints]]
-=== When mapping collections, how do I tell Dozer what type of data objects I want in the destination collection?
-Hints are supported to handle this use case. Hints are not required if
-you are using JDK 1.5 Generics because the types can be auto detected by
-Dozer. But if you are not using generics, to convert a Collection/Array
-to a Collection/Array with different type objects you can specify a Hint
-to let Dozer know what type of objects you want created in the
-destination list. If a Hint is not specified for the destination field,
-then the destination Collection will be populated with objects that are
-the same type as the elements in the src Collection.
+=== 当映射集合的时候，我如何告诉Dozer我需要映射的目标集合的数据类型?
+暗示被支持来处理这种用例。如果你使用的是JDK1.5的泛型，暗示是不需要的。因为类型能够被Dozer自动检测到。
+如果你没有使用泛型，转化包含不同类型对象的一个集合/数组到另外一个集合/数组，你
+可以定义一个暗示来让Dozer知道你想在目标集合中所需要创建的对象类型。如果暗示没有被定义在目标域上，目标集合将会使用和源集合中一样的数据类型进行填充。
 
 [source,xml,prettyprint]
 ----
@@ -354,49 +258,27 @@ the same type as the elements in the src Collection.
 ----
 
 [[bypass-null]]
-=== How can I tell Dozer to bypass mapping null or empty string values?
-You can bypass the mapping of null values by specifying
-map-null="false". If this is specified, the dest field mapping is
-bypassed at runtime and the destination value setter method will not be
-called if the src value is null. This can be specified at the mapping or
-class level.
+=== 我如何告诉Dozer忽略映射 null 或空的字符串值?
+你可以忽略映射null值，通过定义 map-null="false"。如果这个被定义，假如源值是null，目标值的setter方法在运行时会被忽略，
+目标值的setter方法将不会被调用。这个可以被定义在映射或者是类级别上。
 
-You can bypass the mapping of empty String values by specifying
-map-empty-string="false". If this is specified, the dest field mapping
-is bypassed at runtime and the destination value setter method will not
-be called if the src value is an empty String. This can be specified at
-the mapping or class level
+你可以忽略映射任何空字符串通过指定 map-empty-string="false"。如果这个被定义，假如目标值是空字符串，
+目标域映射将在运行时被忽略，目标值的setter方法将不会被调用。这个可以定义在映射或类型级别上。
 
 [[encapsulation]]
-=== Should I encapsulate logic that copies data between objects?
-It is our opinion that you should. Regardless of whether you use Dozer
-to perform data mapping between objects, we believe this is a good
-design pattern that promotes reuse, encapsulates the underlying
-implementation, and makes the code unit testable in isolation. These
-"Assembler" interfaces encapsulate the logic that is responsible for
-taking a src object and mapping the data into a dest object. Using
-assembler type of classes gives you the flexibility of being able to
-modify the underlying mapping implementation without impacting clients
-or the contract. One other important benefit of using Assemblers is that
-it makes writing unit tests specific for the mapping a lot easier and
-more focused. If you ever need to determine if a particular bug is due
-to mapping of objects, it is simple to write an Assembler unit test that
-reproduces the use case. If you encapsulate your data mapping logic, you
-could use Dozer for most of mappings and if you have a real corner case,
-you have the flexibility to hand code mappings for any objects or
-fields. For example, you could run your mapping through Dozer to map 99%
-of your fields and then have a manual mapping for some odd ball field.
-This would happen all within the Assembler without the client having any
-knowledge of the underlying implementation.
+=== 我是否需要封装对象间复制数据的逻辑?
+这是你应该使用的选项。尽管你是否使用Dozer进行对象中数据映射，我们相信这是一个好的设计模式来促进重用，封装底层的实现，使得代码单元可独立的测试。
+这个装配器接口封装了将一个源对象映射为目标对象的逻辑。使用装配器类型的类可以给你最大的灵活性来修改底层的映射，而不需要影响客户端或者是协议。
+另外一个使用装配器的好处是它使得针对映射的单元测试更加容易和专注。
+如果你需要决定是否一个特定的BUG是由于映射对象，只需要编写一个装配器单元测试来重发使用案例。
+如果你封装了你的数据映射逻辑，你可以使用Dozer来处理大多数的映射，如果你包含一个实际的边角例子，
+你可以灵活的处理代码映射针对任何对象和域。例如，你可以可以通过Dozer来处理映射解决99%的你的域，
+然后包含一些手动的映射来处理一些特殊的域。这些功能都在装配器中不需要客户掌握任何底层实现。
 
-It seems to work best if these assembler type of classes are "dumb" and
-are only responsible for simply copying data from the source object into
-the destination object. Any complex postprocessing business logic that
-needs to be performed on the destination object can be done at a higher
-level in classses that have more responsibility.
+如果装配器类型的类是默认和仅仅只复制源对象中的数据到目标对象，这是最佳工作情况。
+任何复杂的针对目标对象后续业务逻辑处理可以在一个更高级别有效的类上进行处理。
 
-The following is a simple example of an assembler type class that uses
-Dozer for its underlying implementation.
+如下是一个简单的使用Dozer作为底层实现装配器类型案例。
 
 [source,java,prettyprint]
 ----
@@ -412,36 +294,19 @@ public class SomeAssemblerImpl implements SomeAssembler {
 ----
 
 [[dozer-unit-tests]]
-=== Should I write unit tests for data mapping logic that I use Dozer to perform?
-Absolutely. And of course, we strongly recommend writing the unit
-test(s) first. Even if you don't use Dozer to perform the data mapping
-between two objects, this logic still needs isolated unit tests. Data
-mapping logic(especially hand coded) is error prone and having a unit
-test is invaluable. Typically mapping between two objects is required in
-multiple areas of a system, so a focused unit test of the central
-mapping logic enables you to test the data mapping logic in isolation.
-The great thing about encapsulating data mapping logic and having unit
-tests for the logic is that you can easily switch out the underlying
-implementation.
+=== 我是否需要为使用Dozer进行处理的映射逻辑编写单元测试?
+当然，首先我们强烈建议编写单元测试。即使你不使用Dozer来进行两个对象之间的数据映射，这断逻辑也是需要独立的测试。
+数据映射逻辑(特别是手写的)是容易错误，包含一个单元测试是无价的。
+有代表性的是在一个系统的多个区域进行两个对象的映射是必须的。
+因此针对中心化映射逻辑的单元测试使你能够独立的测试数据映射逻辑。
+封装数据映射逻辑和包含对逻辑的单元测试的最大好处是能够让你切换底层的实现。
 
-For existing systems that are wanting to migrate to Dozer, we recommend
-first encapsulating any existing hand coded data mapping into an
-assembler type of class and write unit tests for it. Then switch out the
-hand coded mapping logic with Dozer and the unit tests will be your
-safety net. The migration to Dozer can be incremental and this is
-probably the best strategy for exisiting systems.
+针对存量的系统需要迁移到Dozer上的，我们建议首先封装已经存在硬编码数据映射到一个类的装配器类型中，然后对其编写单元测试。然后切换这个硬编码映射逻辑到Dozer中，单元测试将会确保你的安全。迁移到Dozer上可以是增量式的，这或许是最好的针对存量系统的策略。
 
-Regardless of whether or not you use Dozer, unit testing data mapping
-logic is tedious and a necessary evil, but there is a trick that may
-help. If you have an assembler that supports mapping 2 objects
-bi-directionally, in your unit test you can do something similar to the
-following example. This also assumes you have done a good job of
-implementing the equals() method for your data objects. The idea is that
-if you map a source object to a destination object and then back again,
-the original src object should equal the object returned from the last
-mapping if fields were mapped correctly. In the test case, you should
-populate all the possible fields in the original source object to ensure
-that all of the fields are accounted for in the mapping logic.
+无论你是否使用Dozer,针对数据映射的单元测试是无趣的和让人讨厌的，但是有一个技巧或许有帮助。
+如果你有一个装配器来支持两个对象的双向映射，在你的单元测试中你可以进行如下相似的例子。
+这个假定你已经处理好你的数据对象的equals()方法。
+这个思路是你可以映射一个源对象到目标对象，然后返回，原始的源对象应该和最后一次映射返回的对象相同，如果域正确的被映射。在测试案例中，你需要填充所有可能的域到原始对象上来确保所有的域在映射逻辑是工作的。
 
 [source,javaprettyprint]
 ----
@@ -458,10 +323,8 @@ public void testAssembleSomeObject() throws Exception {
 }
 ----
 
-It is also good practice to verify that your assembler handles null
-values properly. In the following test case none of the source fields
-are populated. If the assembler doesn't properly handle null values, an
-exception will be thrown when the assembler is invoked.
+验证你的装配器恰当的来处理null值是一个好的实践。在如下的测试案例中没有一个源域被填充。
+如果装配器不能合理的处理null值，当装配器被调用的时候将会抛出异常。
 
 [source,java,prettyprint]
 ----
@@ -476,23 +339,17 @@ public void testAssembleSomeObject_NullValues() throws Exception {
 ----
 
 [[config-as-singleton]]
-=== Should the Dozer mapper be configured as a Singleton?
-Yes. `Mapper` instances should be reused as much as possible. For every
-instance of the `Mapper`, the mapping files are loaded and
-parsed. You should configure the `Mapper` once for your configuration
-and reuse this instance throughout your application. The
-`Mapper` implementations are thread safe.
+=== Dozer映射器是否需要配置成单例?
+是的。`Mapper` 实例将被尽可能使用。针对每一个 `Mapper`实例， 每一个映射文件被载入和解析。
+你需要为你的配置一次配置完 `Mapper`，并在你的应用中重用。`Mapper`的实现是线程安全的。
 
 [[component-mappings]]
-=== Is it better to have 1 large xml mapping file or to have multiple smaller mapping files?
-We recommend componentizing your mapping files instead of having 1 large
-mapping file.
+=== 包含一个大的xml映射文件或包含多个小的映射文件，哪种方式好?
+我们建议组件化你们的映射文件而不是包含一个大的映射文件。
 
 [[debugging-dozer]]
-=== What are the best ways to debug Dozer?
-You can specify the -Ddozer.debug system property to view the one time
-initialization information. You will see output similar to the
-following....
+=== 调试Dozer的最好方式是什么?
+你可以设定 -Ddozer.debug 系统属性来查看一次性的初始化信息。你可以看到如下相似的信息....
 
 [source,prettyprint]
 ----
@@ -508,12 +365,9 @@ dozer: Using URL [file:/local/subversion_projects/dozer/trunk/target/test-classe
 dozer: Successfully loaded custom xml mappings from URL:[file:/local/subversion_projects/dozer/trunk/target/test-classes/fieldAttributeMapping.xml]
 ----
 
-To debug individual field mappings between classes, set the logging
-level "com.github.dozermapper.core.MappingProcessor=DEBUG". For example, if you are using
-log4j you would add the following entry to your log4j configuration file
-"log4j.category.com.github.dozermapper.core.MappingProcessor=DEBUG". This will show you
-every field mapping that Dozer performs along with the actual source and
-destination values. You will see output similar to the following....
+为了调试独立的域映射在类之间，只需要设定日志级别为 "org.dozer.MappingProcessor=DEBUG"。例如，如果你已经使用
+log4j，你只需要添加如下的项到你的 log4j 配置文件中 "log4j.category.org.dozer.MappingProcessor=DEBUG"。 这将显示每一个Dozer实际进行的从源到目标值域映射。
+你将看到如下相似的输出....
 
 [source,prettyprint]
 ----
@@ -530,10 +384,8 @@ MAPPED: SimpleObj.field6 --> SimpleObjPrime.field6 VALUES:
 ----
 
 [[global-config]]
-=== What is the best way to setup the global configuration?
-We recommend having a separate mapping xml file for global
-configuration. You could name it something similar to
-dozer-global-configuration.xml. Sample global configuration file......
+=== 设定全局配置的最好方式是什么?
+我们建议使用一个独立的映射xml文件来处理全局配置。你可以命名为例如 dozer-global-configuration.xml。全局配置文件的样例如 ......
 
 [source,xml,prettyprint]
 ----
@@ -556,7 +408,6 @@ dozer-global-configuration.xml. Sample global configuration file......
 ----
 
 [[submitting-support-request]]
-=== What is the best way to submit a bug, feature request, or patch?
-We value your suggestions and appreciate everyone that takes the time to
-submit a support request. Please submit all requests via
-link:https://github.com/DozerMapper/dozer[Dozer's GitHub project page]
+=== 提交bug，功能请求或补丁的最佳方式是什么?
+我们珍惜你的建议和赞赏每个人花时间来提交支持请求。
+请通过如下的连接提交所有的请 link:https://github.com/DozerMapper/dozer[Dozer的GitHub项目页面]

@@ -1,17 +1,13 @@
-== Open mapping file
-When opening a Dozer-mapping-file the Dozer-editor appears. If you want
-to edit the raw XML you can switch to the "source" view. +
+== 打开映射文件
+当打开Dozer-mapping-file文件，Dozer-editor界面就会显示。如果你想编辑一个纯XML文件，你可以切换成"source"视图。 +
 image:../../images/eclipse-sourcetab.gif[image]
 
-=== Content Assist
-All the class-a/class-b, field, get-method, set-method, etc -nodes or
--attributes automaticly show content-assist popups when pressing
-ctrl+space or the configured WTP-XML content assist characters. These
-can be changed in the preferences. +
+=== 代码提示
+所有的 class-a/class-b, field, get-method, set-method, etc -nodes or
+-attributes 当使用ctrl+space 或 配置了WTP-XML代码提示字符的时候将会自动弹出代码提示。这些可以通过首选项进行修改。 +
 image:../../images/eclipse-xmlassist.gif[image] +
 image:../../images/eclipse-xmlassist2.gif[image]
 
-=== Validation
-The Dozer Plugin validates the Mapping to find out if the mapped class
-do exist and if the mapped fields are accessible. +
+=== 验证
+Dozer 插件验证映射来确保映射的类是否存在，映射的属性是可访问。 +
 image:../../images/eclipse-validation.gif[image]

@@ -1,16 +1,13 @@
-== Event Listening
-By implementing the `EventListener` interface dozer allows you to listen to
-4 different events:
+== 事件监听
+通过实现 `DozerEventListener` 接口， dozer 将允许你监听 4 种不同的事件:
 
 * `mappingStarted`
 * `mappingFinished`
 * `preWritingDestinationValue`
 * `postWritingDestinationValue`
 
-An `Event` object is passed into these callback methods which stores
-information about the `ClassMap`, `FieldMap`, source object, destination
-object, and destination value. This will allow you to extend Dozer and
-manipulate mapped objects at run-time. The interface is shown below:
+一个 `DozerEvent` 对象将被传递到回调方法中，其中包含有 `ClassMap`, `FieldMap`, 源对象, 目标对象, 和目标值的信息。
+这将允许你能够扩展 Dozer ，并且在运行时处理映射对象。接口如下所示:
 
 [source,java,prettyprint]
 ----
@@ -26,10 +23,7 @@ public interface EventListener {
 }
 ----
 
-The listeners that you create can be injected into the `Mapper`
-using an IOC like Spring or set directly during `Mapper` instance configuration
-using `DozerBeanMapperBuilder#withEventListener(..)` method. Below is an example
-using Spring to inject an event listener:
+你所建立的监听器将被注入到 `Mapper`中，通过使用类似于Spring的IOC容器或在`Mapper`示例配置中直接使用`DozerBeanMapperBuilder#withEventListener(..)` 方法设置。如下是一个使用Spring来注入一个事件监听器的例子:
 
 [source,xml,prettyprint]
 ----

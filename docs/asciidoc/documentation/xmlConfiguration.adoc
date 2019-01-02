@@ -1,23 +1,16 @@
-== Configuration via XML
-The majority of Dozer's behaviour can be configured from within XML mapping
-files. Settings can appear inside five different scopes which affect the
-elements they are applied to: Global, per class mapping, at individual class
-level, per field mapping, and at individual field level.
+== 通过XML进行配置
+主要的Dozer行为可以通过XML映射文件进行配置。在五个不同范围中的配置会影响他们所在的元素：
+全局、每个类映射、在独立的每个类层级，每个领域映射，和在独立的域级别。
 
-=== Configuration Scopes
+=== 配置范围
 
-==== Global Scope
-The configuration block is used to set the global default settings.
-Also, any Custom Converters are defined in this section. The
-configuration block is entirely "optional".
+==== 全局配置
+配置块用于谁当全局的缺省配置。同样的，任何自定义转化器也将在这个部分中定义。配置块完全是可选的。
 
-Dozer supports the ability to have multiple mapping files. Each of these
-mapping files can have their own configuration block. A mapping will
-inherit its configuration from the mapping file that it is stored in.
-*Implicit mappings will inherit the default values for configuration.*
+Dozer 支持包含多个映射文件的能力，但是只有一个全局配置在多个映射文件中。
+我们建议使用一个独立的映射xml文件来定义单独的全局配置。*隐式的映射将会继承配置的缺省值*。
 
-The following is the sample configuration block from the example
-mappings file:
+下面是一个配置块的样例。
 
 [source,xml,prettyprint]
 ----
@@ -35,13 +28,11 @@ mappings file:
 </configuration>
 ----
 
-All global settings appear as separate XML tags containing their value.
+所有的全局配置以独自的xml标签形式包含自己的值。
 
-==== Per Class Mapping
-Global settings (or their defaults) can be overridden at the individual
-mapping level. Here, configuration values are set using name="value"
-attributes. They will affect all mapping operations between the two
-classes.
+==== 每个类映射
+全局配置(或者它们的缺省值)可以被独立的映射级别所覆盖。这里配置值通过使用 name="value" 属性。
+它们将影响所有在两个类之间的映射操作。
 
 [source,xml,prettyprint]
 ----
@@ -55,10 +46,8 @@ classes.
 </mapping>
 ----
 
-==== At Individual Class Level
-Sometimes, you may want to apply a setting only to one of the two classes.
-This can be achieved by placing the attribute inside the `class-a` or `class-b`
-tag:
+==== 在独立的类级别
+有事，你可能想要设置这两个类中的一个。这可以通过将属性放到 `class-a` 或者 `class-b`标签中:
 
 [source,xml,prettyprint]
 ----
@@ -72,8 +61,8 @@ tag:
 </mapping>
 ----
 
-==== Per Field Mapping
-Likewise, you can change the mapping behaviour for specific field pairs:
+==== 每个域映射
+同样的，你可以修改指定域队的映射行为:
 
 [source,xml,prettyprint]
 ----
@@ -87,8 +76,8 @@ Likewise, you can change the mapping behaviour for specific field pairs:
 </mapping>
 ----
 
-==== At Individual Field Level
-Finally, some settings can be applied to a single field:
+==== 在每个独立的域级别
+最后，有些配置可以使用到一个域中:
 
 [source,xml,prettyprint]
 ----
@@ -102,13 +91,11 @@ Finally, some settings can be applied to a single field:
 </mapping>
 ----
 
-=== Available Configuration Settings
-[[label-config-options]]The following table lists the available configuration options and
-mapping directives, in which scopes they can appear, and the section
-of the manual containing more information:
+=== 可用的配置设定
+[[label-config-options]]下表中罗列了可用的配置选项和映射方向，以及他们所适用范围，手册的章节中包含更多信息:
 
 |===
-|Name                      |Global |Class Mapping |Single Class|Field Mapping |Single Field |Manual Section
+|名称                      |全局 |类映射 |独立类|域映射 |单个域 |手册章节
 
 |allowed-exceptions        |X      |              |            |              |             |see below
 |custom-converter          |       |              |            |X             |             |link:customconverter.adoc[Custom Converters]
@@ -140,15 +127,11 @@ of the manual containing more information:
 |wildcard-case-insensitive |X      |X             |            |              |             |see below
 |===
 
-==== Error handling (stop-on-errors, allowed-exceptions)
-By default, if Dozer encounters an error while performing a field mapping, an
-exception is thrown and the mapping aborted. While this is the recommended
-behaviour, Dozer can be instructed to ignore the error and simply continue
-with the next field, via the `stop-on-errors` policy.
+==== 错误处理 (错误中停止 , 允许的异常)
+缺省情况下，如果Dozer在处理域映射的时候遇到错误，将会抛出异常，并停止映射。
+这是推荐的行为，Dozer可被指定为忽略异常，并继续进行下个域的映射，通过设定 `stop-on-errors` 策略。
 
-You can also specify exceptions that should cause Dozer to stop and rethrow
-them, even if `stop-on-errors` is set to false, using the `allowed-exceptions`
-element:
+你也可以设定哪些异常将导致Dozer停止或者重新抛出他们，即使 `stop-on-errors` 被设为 false, 仍可以使用 `allowed-exceptions` 元素:
 
 [source,xml,prettyprint]
 ----
@@ -161,15 +144,12 @@ element:
 </configuration>
 ----
 
-==== Trimming Strings (trim-strings)
-As the name suggests, `trim-strings` applies Java's String.trim()
-to the source value before calling the target beans's setter.
+==== 整理字符串 (trim-strings)
+正如名称所假设的，`trim-strings` 在调用目标对象的setter之前使用Java的 String.trim() 到源值上。
 
-==== Wildcard mapping (wildcard, wildcard-case-insensitive)
-Per default, Dozer maps all fields between source and target bean
-that share the same name ("wildcard mapping").
-Listing fields in mapping definitions does not override this behaviour,
-except for the given fields. For example, given the following classes
+==== 通配符映射 (wildcard, wildcard-case-insensitive)
+默认情况下，Dozer映射所有的在原始和目标对象之间映射所有相同的名称属性("wildcard mapping")。
+在映射定义中罗列的属性将不会覆盖这个行为，只会排除这些属性。例如，给出如下的类
 
 [source,java,prettyprint]
 ----
@@ -184,7 +164,7 @@ class Contact {
 }
 ----
 
-and the mapping definition
+映射定义如下
 
 [source,xml,prettyprint]
 ----
@@ -198,15 +178,10 @@ and the mapping definition
 </mapping>
 ----
 
-a mapping from a `Person` object onto a `Contact` will
-map `lastName` to `surname` and `firstName` to `firstName`,
-even though the latter pair is not mentioned in the mapping
-definition.
+一个从`Person`对象到`Contact`对象的映射将会映射 `lastName` 到 `surname` 和 `firstName` 到 `firstName`,
+即使后者没有在映射中被定义。
 
-You can disable wildcard mapping globally
-or at the class mapping level by setting `wildcard` to false. If you
-do, you have to explicitly specify each pair of fields that should be
-mapped:
+你可以全局上禁用通配符映射或者是在类映射级别上通过设定 `wildcard` 为 false。如果你这样做，你需要显示的设定每一队属性的映射:
 
 [source,xml,prettyprint]
 ----
@@ -224,9 +199,6 @@ mapped:
 </mapping>
 ----
 
-Up to Dozer version 5.4.0, wildcard mappings were case insensitive.
-Current versions of Dozer only automatically map fields with the exact
-same name. You can enable the old case insensitive behaviour by setting
-the `wildcard-case-insensitive` policy to true. Then, for example
-a source field named `camelCase` will be mapped to target field `camelcase`
-(and vice versa).
+在Dozer 5.4.0版本之前, 通配符映射是大小写不敏感的。
+当前版本的Dozer能够自动映射相同名字的属性。你可以通过设定`wildcard-case-insensitive`策略为true来启用旧的大小写不敏感的特性。
+因此，例如一个源属性名称 `camelCase` 将被应用到目标属性 `camelcase`(以此类推)。

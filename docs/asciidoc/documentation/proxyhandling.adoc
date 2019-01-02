@@ -1,30 +1,17 @@
-== Proxy Objects
-=== Overview
-Dozer supports mappings done on proxy objects. This is typically the
-case when using persistence framework, which supports sophisticated
-features like lazy-loading. In this case application is working with
-fake objects, containing the real objects encapsulated. Implementation
-of proxies is dependant on the technology you use. Generally speaking,
-there are two popular libraries for creating Java proxies
-(http://cglib.sourceforge.net/[Cglib] and
-http://www.csg.is.titech.ac.jp/~chiba/javassist/[Javassist]). However,
-how particular framework makes uses of them could also vary. Dozer
-offers by default a generic way to handle simple proxy scenarios, both
-Javassist and Cglib. However it is strongly recommended to tune proxy
-handling behavior for your particular scenario.
+== 代理对象
+=== 总览
+Dozer 支持在代理对象上进行映射。这通常出现在使用持久化框架中，其支持复杂的特性，例如懒加载之类的。
+在这些场景下应用系统使用包含封装了真实对象的假对象。代理的实现依赖于你所使用的技术。通常来说，有两个受欢迎的库来创建java代理。
+(http://cglib.sourceforge.net/[Cglib] 和
+http://www.csg.is.titech.ac.jp/~chiba/javassist/[Javassist])然而，针对具体的框架如何使用他们也是有很大的差别。Dozer 提供了一个缺省的通用方式处理简单的代理场景，包括
+Javassist and Cglib。然而强烈建议将代理的处理方式配合你特俗的场景。
 
-=== Configuration
-Proxy implementation is set-up by modifying
-link:configuration/configuration.adoc[configuration file]. Currently,
-besides of default behavior, Hibernate and No-Proxy modes are supported.
-For the full list of the implementations, see the list of
-com.github.dozermapper.core.util.DozerProxyResolver interface implementations. The list
-could be retrieved from JavaDocs.
+=== 配置
+代理的实现通过修改 link:configuration/configuration.adoc[配置文件] 文件。 当前除了缺省的行为外， Hibernate 和 No-Proxy 模式也是支持的。
+想获取实现的完整列表，可以查看 org.dozer.util.DozerProxyResolver 接口实现的清单。清单可以在 JavaDocs中找到。
 
-In case you do not map proxied objects - use NoProxy resolver, which
-imposes minimum performance overhead.
+没有映射代理对象，即使用 NoProxy 解析器，将带来最小的性能开销。
 
-=== Custom Scenarios
-For custom scenarios it is possible to provide your own implementation
-of com.github.dozermapper.core.util.DozerProxyResolver interface. It is configured in the
-same way as the standard classes.
+=== 自定义场景
+针对自定义场景中你可能需要提供自己的对 org.dozer.util.DozerProxyResolver 接口的实现。
+其配置方式如同标准类型一样。

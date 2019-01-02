@@ -1,7 +1,10 @@
-== Spring Framework Integration
+== Spring 框架集成
+添加 DozerBeanMapperFactoryBean 到你的spring配置文件中。
+映射文件属性上你需要定义任何需要自定义创建的映射文件。如果你没有任何自定义映射，这个列表可以为空。
+也可以设定自定义的事件监听器和bean工厂。
 
-We provide the `dozer-spring4` for integrating spring application.
-If you are using link:https://maven.apache.org/[Apache Maven], simply copy-paste this dependency to your project.
+我们提供了 `dozer-spring4` 来集成spring 应用。
+如果你在使用 :https://maven.apache.org/[Apache Maven], 简单的复制下面的依赖到你的项目中。
 
 .pom.xml
 [source,xml,prettyprint,subs="verbatim,attributes"]
@@ -18,28 +21,22 @@ If you are using link:https://maven.apache.org/[Apache Maven], simply copy-paste
 </dependency>
 ----
 
-=== Configuration
+=== 配置
 
-Add the `DozerBeanMapperFactoryBean` to your Spring configuration file.
-The `mappingFiles` property is where you should specify any custom dozer
-mapping files that you have created. This list can be empty if you don't
-have any custom mappings. It is also possible to set custom event
-listeners and bean factories.
+添加 `DozerBeanMapperFactoryBean` 到你的Spring配置文件中。
+其中 `mappingFiles` 属性中你需要配置你所创建的需要自定义的映射文件。
+如果你没有自定义映射，这个列表可以为空。也可以设定自定的时间监听器和类工厂。
 
-[IMPORTANT]
+[重要]
 ====
-You should define the Dozer mapper bean is defined as
-*singleton="true"*. You should configure the Mapper instance(s) this way
-so that you do not have to reload and reinitialize the mapping files for
-each individual mapping during the lifecycle of your app. Reinitializing
-the mapping files for each mapping would be inefficient and unnecessary.
-The `DozerBeanMapper` class is thread safe.
+你需要定义Dozer映射器实例为  *singleton="true"*。 你需要通过这种方法类配置映射器实例，
+因此你不需要在你的整个应用周期内针对每一个映射重复的加载和初始化映射文件。
+每次映射中都重新初始化映射文件将是无效和没有必要的。DozerBeanMapper 类是线程安全的。
 ====
 
-==== XML based configuration
+==== 基于XML的配置
 
-Note that this Factory Bean supports Spring Resources, which means that
-you could load mapping Xml files by classpath mask for example.
+注意工厂Bean支持Spring Resources,这意味着你可以通过classpath的标记来载入xml文件，例如：
 
 [source,xml,prettyprint]
 ----
@@ -63,7 +60,7 @@ you could load mapping Xml files by classpath mask for example.
 </bean>
 ----
 
-Alternatively, you can define the `DozerBeanMapper` using the `dozer` name space as follow:
+此外，你还可以定义 `DozerBeanMapper`，使用 `dozer` 命名空间如下所示:
 
 [source,xml,prettyprint]
 ----
@@ -82,9 +79,9 @@ Alternatively, you can define the `DozerBeanMapper` using the `dozer` name space
 </beans>
 ----
 
-==== Java based configuration
+==== 基于java代码的配置
 
-When using Java configuration, bean definition is as follows:
+当使用Java配置的时候，bean的定义如下:
 
 [source,java,prettyprint]
 ----
@@ -102,13 +99,13 @@ public class DozerConfig {
 }
 ----
 
-=== How to use in your application
+=== 如何在你的应用中使用
 
-Using Spring to retrieve the Dozer Mapper......
+使用Spring来获取 Dozer Mapper......
 
-===== Look-up based usage
+===== 查找的基本用法
 
-You can use the Dozer Mapper that looked up from the Spring `ApplicationContext`(`BeanFactory`).
+你可以从Spring的`ApplicationContext`(`BeanFactory`)中查找Dozer Mapper。
 
 [source,java,prettyprint]
 ----
@@ -116,9 +113,9 @@ Mapper dozerMapper = applicationContext.getBean("dozerMapper", Mapper.class);
 DestinationObject destObject = dozerMapper.map(sourceObject, DestinationObject.class);
 ----
 
-===== Injection based usage
+===== 基于注入的用法
 
-Alternatively, you can use the Dozer Mapper that injected to your component by Spring DI container.
+此外你还可以使用Spring 的DI容器将Dozer Mapper注入到你的组件中。
 
 [source,java,prettyprint]
 ----
@@ -137,6 +134,6 @@ public class YourComponent {
 }
 ----
 
-=== How to use in Spring Boot Application
+=== 如何在Spring Boot应用中使用
 
-Please see link:springBootIntegration.adoc[Spring Boot Integration] section.
+请查看:springBootIntegration.adoc[Spring Boot Integration] 章节。

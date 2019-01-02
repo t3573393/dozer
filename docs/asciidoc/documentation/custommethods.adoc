@@ -1,8 +1,6 @@
-== Custom get() set() Methods
-=== Mapping a field with no get() or set() methods
-Use the attribute is-accessible to declare that the field can be
-accessed directly. Dozer is able to access private properties that do
-not have getter or setter methods.
+== 自定义get() set()方法
+=== 映射一个不包含get() set()的域
+使用is-accessible属性来声明域可以直接被存取。Dozer 也支持那些不包含getter和setter方法的私有属性的存取。
 
 [source,xml,prettyprint]
 ----
@@ -12,12 +10,10 @@ not have getter or setter methods.
 </field>
 ----
 
-=== Custom Set() and Get() methods (bi-directional)
-For those beans that might have unorthodox getter and setter methods,
-Dozer support user specified setter and getter methods. To make a
-bi-directional mapping in this case, look at the following example
-below. The source field in element A specifies a custom setter method
-and getter method using attributes.
+=== 自定义 Set() 和 Get() 方法 (双向)
+针对那些对象可能包含非传统的getter 和 setter 方法,
+Dozer 支持用户自定义 setter 和 getter 方法。 查看下面的示例中，在这案例中制作了一个双向映射。
+源域在元素A中使用属性定义了自定义的 setter 和 getter 方法。
 
 [source,xml,prettyprint]
 ----
@@ -27,9 +23,7 @@ and getter method using attributes.
 </field>
 ----
 
-In this case we are mapping a String to an ArrayList by calling the
-addIntegerToList() method. Note that this is defined as a one-way field
-type since we can not map an ArrayList to a String.
+在这个例子中我们将通过调用addIntegerToList() 方法映射字符串到一个 ArrayList。注意需要定义起为单向的，因为我们不能映射一个 ArrayList 到字符串。
 
 [source,xml,prettyprint]
 ----
@@ -40,9 +34,8 @@ type since we can not map an ArrayList to a String.
 </field>
 ----
 
-=== Overloaded Set() methods (bi-directional)
-Sometimes set() methods can be overloaded. In order to chose the correct
-one you can add the class type as a parameter.
+=== 重载 Set() 方法 (双向)
+有时 set()方法可以被重载。为了选择正确的一个，你可以添加类型作为参数。
 
 [source,xml,prettyprint]
 ----
@@ -54,12 +47,9 @@ one you can add the class type as a parameter.
 </field>
 ----
 
-=== Iterate Method Mapping (bi-directional)
-Dozer also supports iterate method level mapping. In the following
-example the List appleComputers will be iterated through and for each
-object the method addComptuer will be called. Any field that is denoted
-as type=iterate requires a hint. The get() method can return an Array,
-List, or Iterator.
+=== 迭代方法映射 (双向)
+Dozer 支持迭代方法级别的映射。在如下的例子中 List appleComputers 将被遍历，针对每个对象都将调用 addComptuer 方法。任何被标记type=iterate的域需要 hint。
+而 get() 方法将会返回 Array, List, 或者 Iterator。
 
 [source,xml,prettyprint]
 ----
@@ -70,7 +60,7 @@ List, or Iterator.
 </field>
 ----
 
-Below is an example with iterate methods on both fields.
+如下是一个双方域都是用迭代方法的例子。
 
 [source,xml,prettyprint]
 ----

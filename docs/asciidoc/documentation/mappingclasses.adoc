@@ -1,9 +1,6 @@
-== Mapping Classes
-An example of mapping two classes is defined below. Note: Explicit xml
-mapping for 2 classes is not required if all the field mapping between
-src and dest object can be performed by matching on attribute name.
-Custom xml class mapping is only required when you need to specify any
-custom field mappings.
+== 映射类
+映射两个类的例子如下所示。注意：显式的xml映射两个类不必须要所有映射的源和目标对象的域包含相同的名字。
+自定义xml类映射只有当你需要自定义任何域映射时候使用。
 
 [source,xml,prettyprint]
 ----
@@ -16,11 +13,7 @@ custom field mappings.
 </mappings>
 ----
 
-These mappings are bi-directional so you would never need to define an
-XML map for TestObjectPrime to TestObject. If these two classes had
-references to complex types that needed type transformation, you would
-also define them as mappings. Dozer recursively goes through an object
-and maps everything in it. Data type conversion is performed
-automatically. Dozer also supports no attribute mappings at all. If
-supplied two classes that are not mapped, it simply tries to map
-properties that are the same name.
+这些映射都是双向的，因此你不需要定义 XML映射针对 TestObjectPrime 到 TestObject。
+如果两个类型包含复杂的类型引用需要进行转化的时候，你也可以定义他们的映射。
+Dozer将会递归的处理一个对象，映射里面的所有东西。数据类型转化是自动进行的。
+Dozer也支持无属性映射。如果两个类型没有被映射，它将简单的映射相同的名称的属性。

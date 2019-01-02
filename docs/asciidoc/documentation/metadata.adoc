@@ -1,15 +1,10 @@
-== Querying mapping metadata
-This section will cover the mapping metadata interface. It provides easy
-to use read-only access to all important properties or aspects of the
-currently active mapping definitions.
+== 查询映射元数据
+这章节将介绍映射元数据接口。它提供了一个容易使用的只读方式获取所有重要的属性或当前激活的映射的各个方面。
 
-The following sections will give some code examples how to use the
-mapping query interfaces. The most important interface in the whole
-process is `com.github.dozermapper.core.metadata.MappingMetadata`. An instance can be
-acquired by calling the `getMappingMetadata()` method of the
-`Mapper` instance.
+如下章节将给出一些如何使用映射查询接口的代码案例。在整个过程中最重要的接口是 `org.dozer.metadata.MappingMetadata`。
+实例可以通过调用 `Mapper`实例的 `getMappingMetadata()` 方法获取。
 
-Consider the following mapping file:
+假定有如下的映射文件:
 
 [source,xml,prettyprint]
 ----
@@ -28,7 +23,7 @@ Consider the following mapping file:
 </mappings>
 ----
 
-To begin querying the mapping definitions the following code is needed:
+为了查询映射定义，需要如下的代码:
 
 [source,java,prettyprint]
 ----
@@ -38,8 +33,7 @@ Mapper mapper = DozerBeanMapperBuilder.create()
 MappingMetadata mapMetadata = mapper.getMappingMetadata();
 ----
 
-Now that a reference to MappingMetadata is obtained we can start
-querying for a certain class mapping definition:
+现在我们得到了一个对 MappingMetadata的引用，我们将开始进行一个确定类型映射的查询:
 
 [source,java,prettyprint]
 ----
@@ -51,8 +45,7 @@ try {
 }
 ----
 
-When holding a reference to a ClassMappingMetadata interface, queries
-for individual field mappings can be executed:
+当持有了对 ClassMappingMetadata 接口的引用，可以执行针对每个独立的域映射的查询:
 
 [source,java,prettyprint]
 ----
@@ -65,5 +58,4 @@ try {
 }
 ----
 
-For extensive documentation on the different interfaces please refer to
-the JavaDoc.
+需要进一步了解不同接口的文档，可以查看 JavaDoc。

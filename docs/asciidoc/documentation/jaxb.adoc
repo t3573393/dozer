@@ -1,12 +1,9 @@
-== 3rd Party Object Factories
-Dozer supports mapping of plain Java objects to frameworks that require
-instantiation of objects via certain convention of calling factory
-methods. To reproduce the expected behavior custom bean factories should
-be used.
+== 3rd 对象工厂
+Dozer 支持需要通过调用工厂方法进行实例化的纯java对象映射框架。
+为了到达既定的目标，自定义的用例工厂需要被使用。
 
-=== Mapping JAXB Objects
-Dozer has support for mapping POJOs to JAXB objects. Use the
-JAXBBeanFactory for any JAXB objects you want create.
+=== 映射 JAXB 对象
+Dozer 已经支持映射POJO对象到JAXB对象。使用JAXBeanFactory来创建任何你想建立的JAXB对象。
 
 [source,xml,prettyprint]
 ----

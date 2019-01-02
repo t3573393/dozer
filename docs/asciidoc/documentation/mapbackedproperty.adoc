@@ -1,8 +1,6 @@
-== Map Backed Property Mapping
-=== Map to Map
-Dozer will map a java.util.Map to a java.util.Map. If there are complex
-types with hints it will do deep recursion mapping as well. If the
-destination map exists it will add elements to the existing map.
+== 映射map中的备用属性
+=== Map 转化为 Map
+Dozer 将会映射 java.util.Map 到另外一个 java.util.Map。如果包含复杂的类型可以通过使用提示来帮助实现深度的递归映射。如果目标map存在，它将把元素添加到存在的map中。
 
 [source,xml,prettyprint]
 ----
@@ -18,15 +16,10 @@ destination map exists it will add elements to the existing map.
 </mapping>
 ----
 
-=== Mapping Field Level Properties to a java.util.Map or a Custom Map with unique Get/Set methods
-Dozer supports mapping map backed properties at the field level. The map
-can either implement the java.util.Map Interface or be a custom map with
-a set of unique Get/Set methods.
+=== 映射域级别的属性到 java.util.Map 或一个自定义的 Map 中使用独立的Get/Set 方法
+Dozer 支持映射map的备用属性在域级别。这种映射不仅仅可以通过实现 java.util.Map 接口也可以通过自定义包含独立的Get/Set 方法的map。
 
-In this example Field A is a basic String and it is mapped to Field B
-which is a HashMap. The key in the HashMap will be "stringProperty" (the
-attribute name) and the value will be whatever value is stored in that
-attribute.
+在这个例子中域A是一个简单字符串，它将被映射到HashMap类型的域B中。在HashMap中的key将会是 "stringProperty" (属性名称)，而值为存储在域A中的值。
 
 [source,xml,prettyprint]
 ----
@@ -40,10 +33,7 @@ attribute.
 </mapping>
 ----
 
-This example shows Field A is a basic String and it is mapped to Field B
-which is a HashMap. The key in the HashMap will be "myStringProperty"
-and the value will be whatever value is stored in that attribute. Also
-notice that Field A has a unique setter() method name.
+在这个例子中域A是一个简单字符串，它将被映射到HashMap类型的域B中。在HashMap中的key将会是 "myStringProperty"，而值为存储在域A中的值。此外注意域A包含一个独立的setter()方法。
 
 [source,xml,prettyprint]
 ----
@@ -57,14 +47,7 @@ notice that Field A has a unique setter() method name.
 </mapping>
 ----
 
-This example shows Field A is a basic String and it is mapped to Field B
-which is a custom map. The key in the custom map will be
-"myCustomProperty" and the value will be whatever value is stored in
-that attribute. Notice that Field B has unique map getter() and map
-setter() method names. If you are using a custom map you must explicitly
-set the map Get/Set method names. A destination hint can also be
-provided if your custom map implements an Interface or is an Abstract
-class.
+在这个例子中域A是一个简单字符串，它将被映射到自定义的map类型的域B中。在HashMap中的key将会是 "myCustomProperty"，而值为存储在域A中的值。此外注意域B中包含独立的map getter() 和 map setter()方法名称。如果你在使用自定义的map，你必须显式的设定map的Get/Set方法名称。如果你的自定义map实现一个接口或者是抽象类，也可以通过使用目标提示的方法。
 
 [source,xml,prettyprint]
 ----
@@ -87,22 +70,11 @@ class.
 </mapping>
 ----
 
-=== Mapping Class Level Properties to a java.util.Map or a Custom Map with unique Get/Set methods
-Dozer can also map entire complex objects directly to a java.util.Map or
-a custom map object. This example shows the declaration of a mapping
-between a complex object (PropertyToMap) and a java.util.Map. When doing
-this you need to explicitly define a unique map-id for the mapping. This
-is used when determining which map to use at run-time. Every attribute
-on the PropertyToMap class will be mapped to the java.util.Map. You DO
-NOT need to explicitly define these mappings. Field exclude mappings can
-be used to exclude fields at run-time. If the attribute name is not the
-same as the map key just set the key attribute for a custom field
-mapping. The mapping to stringProperty2 shows an example of this.
+=== 使用独立的Get/Set方法进行映射类级别的属性到 java.util.Map 或一个自定义的 Map 
+Dozer也能够直接映射完整的复杂的对象到 java.util.Map 或一个自定义的map对象上。该例子将展示声明一个在复杂对象(PropertyToMap)和 java.util.Map上的映射。当这样做的时候，你需要显式的使用一个独立的 map-id来标注这个映射。这个标记将能够在运行时确定哪一个映射被使用。每一个在 PropertyToMap类中的属性将被映射到 the java.util.Map。你不需要显式的定义蛇蝎映射。 排除域映射将能用来在运行时排除一些域。如果属性名称和map中的key不一致，只会设定自定义域中的key映射。stringProperty2 中的映射将显示这个例子。
 
-The second example shows how to setup a custom map object. The only
-difference here is that you need to explicitly define map-set-method and
-map-get-method values. These correspond to the java.util.Map get() and
-put() methods.
+第二个例子将会显式如何设定一个自定义的map对象。唯一的区别是这里你需要显式的设定 map-set-method 和
+map-get-method 的值。这些对应 java.util.Map get() 和 put() 方法。
 
 [source,xml,prettyprint]
 ----
@@ -134,10 +106,8 @@ put() methods.
 </mapping>
 ----
 
-The example below shows how to use these mappings. Notice that the field
-mappings reference a map-id. The first field mapping will use the
-myTestMapping defined mapping and map accordingly. Same goes with the
-custom mapping.
+下面的例子将会显示如何使用这些映射。注意这些域映射通过 map-id 进行引用。第一个域映射将会使用
+myTestMapping 定义映射。通用的用法也适用于自定义映射。
 
 [source,prettyprint]
 ----
@@ -160,9 +130,7 @@ custom mapping.
 </mapping>
 ----
 
-The Class Level map backed mappings can also be used as a standard
-mapping. For this dozer has a new API. In addition to the source and
-destination classes you can now pass in the map reference Id.
+类级别的map映射也可以当做一个标准的映射。针对这些 dozer包含一个新的API。在传统的源类型和目标类型此外还可以传递映射的引用ID。
 
 [source,java,prettyprint]
 ----

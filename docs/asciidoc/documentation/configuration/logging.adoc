@@ -1,8 +1,4 @@
-== Logging
-The logging facade framework in Dozer is link:http://www.slf4j.org/[SLF4J].
-It replaced Commons Logging, which was used in project previously until
-version 5.3.
+== 日志
+在Dozer中使用的日志层框架是 link:http://www.slf4j.org/[SLF4J]。它替代了 Commons Logging, 这个在版本 5.3之前的项目中使用。
 
-Please refer to link:http://www.slf4j.org/docs.html[SLF4J Documentation] for
-more information on setting up and configuring different logging
-implementations.
+请查考 link:http://www.slf4j.org/docs.html[SLF4J 文档] 来获取更多的信息用来建立和配置日志的实现。

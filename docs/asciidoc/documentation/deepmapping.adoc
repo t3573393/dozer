@@ -1,11 +1,7 @@
-== Deep Property Mapping
-It is possible to map deep properties. An example would be when you have
-an object with a String property. Your other object has a String
-property but it is several levels deep within the object graph. In the
-example below the DestDeepObj has nested attributes within the object
-graph that need to be mapped. Type hints are supported for deep field
-mappings. The attributes copy-by-reference, type=one-way, and
-relationship-type can also be used.
+== 深度属性映射
+可能需要映射深度属性。一个例子中当你有一个对象包含字符串属性。你的其他对象也包含一个字符属性，但是它在对象图中一些深度级别中。
+在下面的例子中 DestDeepObj 包含一个嵌套的属性在对象图中需要被映射。类型hint支持深度属性映射。此外 copy-by-reference, type=one-way 和
+relationship-type也能被使用。
 
 [source,xml,prettyprint]
 ----
@@ -44,8 +40,8 @@ relationship-type can also be used.
 </mapping>
 ----
 
-=== Deep Indexed Mapping
-Indexed mapping within deep mapping is supported.
+=== 深度下标映射
+下标映射在深度映射中也是支持的。
 
 [source,xml,prettyprint]
 ----
@@ -55,14 +51,11 @@ Indexed mapping within deep mapping is supported.
 </field>
 ----
 
-Destination Hints are NOT required if the indexed collection is an Array
-or if you are using jdk 1.5 Generics. Dozer is able to automatically
-determine the property type for these use cases. But you will need to
-provide hints if the data types are not Arrays or if you are not using
-Generics. This is required so that Dozer knows what types of dest
-objects to create while it traverses the deep field mapping.
+目标 Hints可以不需要，在下标集合是一个 Array 或者你使用了 jdk 1.5 泛型。
+Dozer 能够自动决定这些场景中的属性类型。如果数据类型不是 Arrays 或者是你没有使用泛型，你则需要提供 hints。
+因而 Dozer 知道在传输深度属性映射时创建目标对象时所需的类型是什么。
 
-The following is an example of using hints.....
+如下是使用hints的一个例子.....
 
 [source,xml,prettyprint]
 ----

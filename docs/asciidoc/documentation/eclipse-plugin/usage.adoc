@@ -1,9 +1,7 @@
-== Create new Mapping files
-The plugin provides a simple wizard for creating new mapping-xml files.
-A new mapping-xml file can be created using File > New > Other > Dozer
-Mapping Framework > Dozer Mapping File. Select the correct dozer version
-(4, DTD or 5, XSD) in the wizard and create the file.
+== 新建新的映射文件
+插件提供了一个简单的向导程序来创建新的XML映射文件。一个新的XML映射文件可以通过使用 File > New > Other > Dozer
+Mapping Framework > Dozer Mapping File 菜单。在向导中选择正确的 dozer 版本(4, DTD or 5, XSD)，然后创建文件。
 
-=== Configure the Mapping
-* link:usage-xml.adoc[via XML]
-* link:usage-editor.adoc[via the Editor]
+=== 配置映射
+* link:usage-xml.adoc[使用 XML]
+* link:usage-editor.adoc[使用编辑器]

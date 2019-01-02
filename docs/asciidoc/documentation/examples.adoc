@@ -1,4 +1,2 @@
-== Examples
-There are some sample mapping files under
-\{dozer.home}/src/test/resources. These mapping files are used by the
-Dozer unit tests.
+== 示例
+包含一些样例映射文件在  \{dozer.home}/src/test/resources. 文件夹下。这些映射文件用来做 Dozer 的单元测试。

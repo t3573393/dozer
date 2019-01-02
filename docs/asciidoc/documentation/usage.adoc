@@ -1,9 +1,8 @@
-== Usage
-=== Dozer Bean Mapper
-Before we go over setting up custom xml bean mappings, let us look at a simple example of using Dozer.
-The Dozer mapping implementation has a method called map which takes a source object and either
-a destination object or destination object class type.
-After mapping the two objects it then returns the destination object with all of its mapped fields.
+== 使用
+=== Dozer Bean 映射器
+在我们准备着手自定义xml bean映射之前，让我们看看一个简单的使用Dozer的例子。
+Dozer 映射的实现包含有一个称作 map的方法，其包含源对象和一个目标对象或者目标对象数据类型参数。
+在映射两个对象之后，它将返回包含所有它映射属性的目标对象。
 
 [source,java,prettyprint]
 ----
@@ -11,7 +10,7 @@ Mapper mapper = DozerBeanMapperBuilder.buildDefault();
 DestinationObject destObject = mapper.map(sourceObject, DestinationObject.class);
 ----
 
-Or...
+或...
 
 [source,java,prettyprint]
 ----
@@ -19,30 +18,21 @@ DestinationObject destObject = new DestinationObject();
 mapper.map(sourceObject, destObject);
 ----
 
-Dozer operates in two general modes: implicit and explicit.
+Dozer 有两种运行模式 : 隐式和显式。
 
-_Implicit_ mode is activated by default and tries to resolve mappings for you.
-It uses simple assumptions that if two objects are passed for mapping then bean properties with
-the same names should be mapped. If there are additional mappings needed,
-which can not be derived by the naming you should add those either via
-link:mappings.adoc[XML], link:annotations.adoc[annotations] or link:apimappings.adoc[API].
+隐式模式是默认激活的，最大化的解决你的映射问题。
+它使用一个简单的假设如果两个对象需要映射，其相同名字的属性需要被映射。如果你需要额外的映射，其不能通过名称进行导出，你可以如下的方法添加
+link:mappings.adoc[XML], link:annotations.adoc[注释] 或 link:apimappings.adoc[API].
 
-_Explicit_ mode assumes that no mappings should be performed or "guessed" until you have specified those specifically.
-The amount of coding is higher in explicit mode, but sometimes you would like to have  full control on
-what is going on during the mappings process and this approach is also used in many of the productive applications.
-Implicit/Explicit mapping switch is called _"wildcard"_ in Dozer.
+显式模式假定直到你明确定义前没有映射需要被执行或者猜测。显式模式的代码量高，但是有事你可能需要完全控制映射过程的处理，这个方式也被使用到需要生产上的应用。隐式和显式的映射切换通过使用Dozer中的wildcard 标记。
 
-=== Injecting Custom Mapping Files
-The Dozer mapping xml file(s) define any custom mappings that can't be automatically performed by the Dozer mapping engine.
-Any custom Dozer mapping files need to be injected into the `Mapper` implementation
-via `DozerBeanMapperBuilder#withMappingFiles(..)` method.
+=== 注入自定义映射文件
+Dozer映射 xml文件定义任何Dozer映射引擎不能自动处理的自定义映射。
+任何自定义的映射文件都需要被注入到 `Mapper` 实现，通过 `DozerBeanMapperBuilder#withMappingFiles(..)` 方法。
 
-Preferably, you will be using an IOC framework such as Spring for these Dozer injection requirements.
-Alternatively, the injection of mapping files can be done programmatically.
-Below is a programmatic approach to creating a bean mapper.
-Note that this is *NOT the recommended way to retrieve the bean mapper*.
-Each new instance needs to be initialized and this consumes time as well as resources.
-If you are using the mapper this way just wrap it using the singleton pattern.
+首选上你会使用一个IOC框架，例如spring来进行Dozer的依赖注入。此外，映射文件的注入也可以通过编码方式来实现。
+下面是一个编码方式来创建一个bean映射器。注意这不是推荐的方式来获取bean映射器。
+每一个新实例都需要被初始化，这将消耗时间和资源。如果你想这样使用映射器可以使用单例模式。
 
 [source,java,prettyprint]
 ----
@@ -53,8 +43,8 @@ Mapper mapper = DozerBeanMapperBuilder.create()
 DestinationObject destObject = mapper.map(sourceObject, DestinationObject.class);
 ----
 
-=== Spring Integration
-The following is an example how the Mapper bean would be configured via Spring.
+=== Spring 集成
+西面是一个例子展示如何通过spring进行映射器bean的配置。
 
 [source,xml,prettyprint]
 ----

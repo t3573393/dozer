@@ -1,5 +1,5 @@
-== Enum Mapping
-To map an enums value to another enum is shown below.
+== 枚举类型映射
+下面展示映射一个枚举类型到另外一个枚举类型。
 
 [source,xml,prettyprint]
 ----
@@ -9,7 +9,7 @@ To map an enums value to another enum is shown below.
 </field>
 ----
 
-Based on the following code:
+基于如下代码:
 
 [source,java,prettyprint]
 ----

@@ -1,11 +1,7 @@
-== Setting global dozer configuration
-All global configuration values can be set in the "Global Configuration"
-Tab.
+== 设定全局的dozer 配置
+所有的全局配置值可以通过在全局配置的tab中进行设定。
 image:../../images/eclipse-globalconfigtab.gif[image]
 
-=== Configuring mappings
-Every classmapping is listed in the "Mapping" Tab. Mappings of classes
-and fields can be added by Popup menu or the action-buttons at the top.
-On the right side the mappings can be configured. Every Attribute or
-Element in the XML file is shown for editing. +
+=== 配置映射
+每一个类映射将被罗列在"Mapping" Tab中。类和属性的映射可以通过弹出菜单或者顶部功能按钮来添加。映射可以被配置在右边栏。每个XML中的属性或元素将被显示编辑。+
 image:../../images/eclipse-mappingtab.gif[image]

@@ -1,8 +1,8 @@
 :dozer-version: 6.5.0-SNAPSHOT
 
-== Getting Started
-=== Downloading the Distribution
-If you are using link:https://maven.apache.org/[Apache Maven], simply copy-paste this dependency to your project.
+== 入门
+=== 下载发布包
+如果你在使用 link:https://maven.apache.org/[Apache Maven], 只需要简单的复制这些依赖到你的项目中。
 
 [source,xml,prettyprint,subs="verbatim,attributes"]
 ----
@@ -13,8 +13,8 @@ If you are using link:https://maven.apache.org/[Apache Maven], simply copy-paste
 </dependency>
 ----
 
-=== 1st Mapping
-For your first mapping, lets assume that the two data objects share all common attribute names.
+=== 第一个映射
+作为你的第一个映射，假定两个数据对象包含相同的属性名称。
 
 [source,java,prettyprint]
 ----
@@ -22,29 +22,22 @@ Mapper mapper = DozerBeanMapperBuilder.buildDefault();
 DestinationObject destObject = mapper.map(sourceObject, DestinationObject.class);
 ----
 
-After performing the Dozer mapping, the result will be a new instance of the destination object that
-contains values for all fields that have the same field name as the source object.
-If any of the mapped attributes are of different data types, the Dozer mapping engine will automatically
-perform data type conversion.
-At this point you have completed your first Dozer mapping.
-Later sections will go over how to specify custom mappings via custom xml files.
+在Dozer映射执行之后，结果是新的目标对象中所有和源对象中名称相同的域包含值。
+如果任何映射属性包含不同数据类型的话，Dozer映射引擎将自动进行类型转化。
+此时你已经完成你的第一个 Dozer 映射。接下来的部分将会介绍如何通过自定义 xml 文件进行自定义映射。
 
-*IMPORTANT:* For real-world applications it is _NOT_ recommended to create a new instance of the Mapper
-each time you map objects but reuse created instance instead.
+*重要:* 针对真实的应用，不建议每次映射对象的时候新建一个 Mapper实例，而是重用这个已经新建的实例。
 
-=== Specifying Custom Mappings via XML
-If the two different types of data objects that you are mapping contain any fields that don't share a common property name,
-you will need to add a class mapping entry to your custom mapping xml file.
-These mappings xml files are used at runtime by the Dozer mapping engine.
+=== 通过XML 定义自定义映射
+如果需要映射的两个不同类型的数据对象不包含相同的属性名称，你就需要添加一个类型映射条目到自定义的映射xml文件中。
+这些映射xml文件都能在运行时被 Dozer映射引擎使用。
 
-Dozer automatically performs any type conversion when copying the source field data to the destination field.
-The Dozer mapping engine is bi-directional, so if you wanted to map the destination object to the source object,
-you do not need to add another class mapping to the xml file.
+在从源域对象到目标域进行复制的时候，Dozer 自动进行任何的类型转化。
+Dozer映射是双向的，因此如果你想映射目标对象到源对象，你不需要添加额外的类映射到xml文件中。
 
-*IMPORTANT:* Fields that are of the same name do not need to be specified in the mapping xml file.
-Dozer automatically maps all fields with the same property name from the source object into the destination object.
+*重要:* 相同名字的域不需要在映射xml文件中定义。Dozer将映射所有相同属性名称的域从源对象到目标对象上。ination object.
 
-i.e.:
+例如:
 
 [source,xml,prettyprint]
 ----
@@ -58,9 +51,8 @@ i.e.:
 </mapping>
 ----
 
-The complete Dozer mapping xml file would look like the following.
-The link:./mappings.adoc[Custom Mappings] section contains more information on mapping options that
-are available to you for more complex use cases.
+完成的Dozer映射文件将像下面的一样。
+link:./mappings.adoc[自定义映射] 章节包含了更多关于映射选项信息，从而帮助你了解更多复杂的用例。
 
 [source,xml,prettyprint]
 ----
@@ -84,8 +76,6 @@ are available to you for more complex use cases.
 </mappings>
 ----
 
-=== Dozer and Dependency Injection Frameworks
-Dozer is not dependant of any existing Dependency Injection framework (link:https://en.wikipedia.org/wiki/Dependency_injection[DI]).
-However the general aim is to support the most typical use cases with ready-to-use wrappers.
-Check link:springintegration.adoc[Spring Integration] manual for option of initializing Dozer
-in context of Spring DI framework.
+=== Dozer和依赖注入框架
+Dozer 不独立域已经存在的依赖注入框架。(link:https://en.wikipedia.org/wiki/Dependency_injection[DI]).
+然而通常的目标是为了支持更加传统的开箱即用的封装使用案例。可以查看 link:springintegration.adoc[Spring 集成] 手册来可选的初始化 Dozer 在 Sping 依赖注入框架的上下文中。

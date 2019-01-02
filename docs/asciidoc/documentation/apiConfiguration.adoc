@@ -1,7 +1,5 @@
-== Configuration via API
-If you are using the link:apimappings.adoc[MapperBuilder] to
-define your mappings, you can declare mapping, class, and field
-configuration settings programmatically:
+== 通过API进行配置
+如果你在使用:apimappings.adoc[MapperBuilder] 来定义你的映射, 你可以通过编码的方式来声明映射、类、属性的配置:
 
 [source,java,prettyprint]
 ----
@@ -22,7 +20,6 @@ Mapper mapper = DozerBeanMapperBuilder.create()
                 .build();
 ----
 
-*Global configuration is currently not supported by the API.*
+*目前全局映射还不能通过API来实现。*
 
-Please see <<xmlConfiguration.adoc#label-config-options,Configuration via XML>>
-for a list of the available configuration settings.
+请通过<<xmlConfiguration.adoc#label-config-options,Configuration via XML>>查看一系列可用的配置设定。

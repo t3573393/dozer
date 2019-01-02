@@ -1,6 +1,5 @@
-== String to Date Mapping
-A date format for the String can be specified at the field level so that
-the necessary data type conversion can be performed.
+== 字符串到日期的转化
+一个日期格式的字符串可以在域级别上定义，从而必要的数据类型转化将会被执行。
 
 [source,xml,prettyprint]
 ----
@@ -10,9 +9,8 @@ the necessary data type conversion can be performed.
 </field>
 ----
 
-A default date format can also be specified at the class mapping level.
-This default date format will be applied to all field mappings unless it
-is overridden at the field level.
+一个缺省的日期格式可以定义在类映射级别。
+这个缺省的日期格式将被应用到所有的域映射中，除非在域级别上被覆盖。
 
 [source,xml,prettyprint]
 ----
@@ -26,9 +24,8 @@ is overridden at the field level.
 </mapping>
 ----
 
-A default date format can also be specified at the very top mappings
-level. This default date format will be applied to all field mapppings
-unless it is overridden at a lower level
+缺省的日期格式可以被定义在任何顶级映射级别上。
+缺省的日期格式将被应用到所有域映射上，除非在更低一级上被覆盖。
 
 [source,xml,prettyprint]
 ----

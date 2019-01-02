@@ -1,9 +1,6 @@
-== One-Way Mapping
-You can set how a mapping definition behaves as far as direction goes.
-If you only want to map two classes to go one-way you can set this at
-the mapping level. The default is bi-directional. This can be set at the
-mapping level OR the field level. When one-way is specified, "a" is
-always the src object and "b" is always the destination object.
+== 单向映射
+你可以设定映射定义的方向行为。如果你仅想设定两个类的单向映射，你可以设定其在映射级别。
+默认是双向。这可以设定在映射级别或者是域级别。当单向被设定，a通常是源对象，b通常是目标对象。
 
 [source,xml,prettyprint]
 ----
@@ -17,9 +14,7 @@ always the src object and "b" is always the destination object.
 </mapping>
 ----
 
-In the following example the one-way fields are only mapped when "a"
-object is mapped to "b" object. If "b" is mapped to "a", then the field
-is not mapped.
+在如下的例子中单线域只映射a对象到b对象。如果b被映射到a，域则不会被映射。
 
 [source,xml,prettyprint]
 ----
@@ -37,10 +32,8 @@ is not mapped.
 </mapping>
 ----
 
-=== Excluding Fields One-Way
-Dozer supports field excludes going one-way as shown in the example. In
-the example the field is only excluded when "a" is mapped to "b". If "b"
-is mapped to "a", then the field is not excluded.
+=== 排除单向域
+Dozer 支持域的单向排除，如下所示。在例子中域仅在a映射到b的时候被排除，如果是b映射到a，域则不被排除。
 
 [source,xml,prettyprint]
 ----

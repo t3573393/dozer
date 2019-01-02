@@ -1,11 +1,11 @@
-== Spring Boot Integration
+== 集成 Spring Boot
 
-We provide the `dozer-spring-boot-starter` for integrating spring boot application since 6.2.0.
-If you are using link:https://maven.apache.org/[Apache Maven], simply copy-paste this dependency to your project.
+我们提供了 `dozer-spring-boot-starter` 来集成 spring boot 应用，自从 6.2.0 之后。
+如果你在使用 link:https://maven.apache.org/[Apache Maven], 只需要简单的复制如下的依赖到你的项目中。
 
-[NOTE]
+[注意]
 ====
-For details for Spring Framewrok Integration, please see link:springintegration.adoc[here].
+详细的Spring框架集成, 请看 link:springintegration.adoc[here].
 ====
 
 .pom.xml
@@ -18,7 +18,7 @@ For details for Spring Framewrok Integration, please see link:springintegration.
 </dependency>
 ----
 
-You can specify any custom dozer mapping files in your application properties or yml.
+你可以定义任意的dozer映射文件在你的应用properties或 yml文件中。
 
 .application.properties
 [source,properties,prettyprint]

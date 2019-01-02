@@ -1,7 +1,5 @@
-== Context Based Mapping
-Context based mapping can be specified by using the map-id attribute.
-Note that we also support nested context mapping by specifying a map-id
-at the field level.
+== 基于上下文的映射
+基于上下文的映射可以通过使用map-id属性进行定义。注意我们也支持嵌套的上下文映射通过定义map-id在属性级别上。
 
 [source,xml,prettyprint]
 ----
@@ -39,8 +37,7 @@ at the field level.
 </mapping>
 ----
 
-To use a particular context when invoking the Mapper, you simply specify
-the map-id in your mapping call.
+当调用映射时需要使用一个特定上下文的时候，可以通过在你的映射调用中指定 map-id。
 
 [source,javaprettyprint]
 ----

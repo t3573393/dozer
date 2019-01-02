@@ -1,70 +1,70 @@
-= Summary
-== User Guide
-.. link:about/about.adoc[What is Dozer?]
-.. link:documentation/whymap.adoc[Why Map?]
-.. link:documentation/gettingstarted.adoc[Getting Started]
-... link:documentation/usage.adoc[Usage]
-.. link:documentation/mappings.adoc[Mappings via XML]
-... link:documentation/annotations.adoc[via Annotations]
-... link:documentation/apimappings.adoc[via API]
-.. link:documentation/configuration/configuration.adoc[Configuration]
-... link:documentation/xmlConfiguration.adoc[Configuration via XML]
-... link:documentation/apiConfiguration.adoc[Configuration via API]
+= 总结
+== 用户手册
+.. link:about/about.adoc[Dozer是什么?]
+.. link:documentation/whymap.adoc[为什么需要映射?]
+.. link:documentation/gettingstarted.adoc[入门]
+... link:documentation/usage.adoc[用法说明]
+.. link:documentation/mappings.adoc[通过 XML描述映射]
+... link:documentation/annotations.adoc[使用 Annotations]
+... link:documentation/apimappings.adoc[使用 API]
+.. link:documentation/configuration/configuration.adoc[配置]
+... link:documentation/advancedConfiguration.adoc[高级配置]
+... link:documentation/globalConfiguration.adoc[全局配置]
 
-== Dozer mapping concepts
-.. link:documentation/mappingclasses.adoc[Mapping Classes]
-.. link:documentation/simpleproperty.adoc[Basic Property Mapping]
-.. link:documentation/baseattributes.adoc[Inheritance Mapping]
-.. link:documentation/contextmapping.adoc[Context Based Mapping]
-.. link:documentation/oneway.adoc[One-Way Mapping]
-.. link:documentation/copybyreference.adoc[Copying By Object Reference]
-.. link:documentation/deepmapping.adoc[Deep Property Mapping]
-.. link:documentation/indexmapping.adoc[Indexed Property Mapping]
-.. link:documentation/exclude.adoc[Excluding Fields]
-.. link:documentation/advancedproperty.adoc[Assembler Pattern]
-.. link:documentation/immutable.adoc[Mapping immutable types]
+== Dozer 映射概念
+.. link:documentation/mappingclasses.adoc[类映射]
+.. link:documentation/simpleproperty.adoc[基础属性映射]
+.. link:documentation/baseattributes.adoc[映射继承]
+.. link:documentation/contextmapping.adoc[基于上下文的映射]
+.. link:documentation/oneway.adoc[单向映射]
+.. link:documentation/copybyreference.adoc[通过引用进行对象复制]
+.. link:documentation/deepmapping.adoc[深度属性映射]
+.. link:documentation/indexmapping.adoc[索引化的属性映射]
+.. link:documentation/exclude.adoc[排除域]
+.. link:documentation/advancedproperty.adoc[聚集模式]
+.. link:documentation/immutable.adoc[映射不可变类型]
 
-== How do i map a type of...?
-.. link:documentation/enum.adoc[Enums]
-.. link:documentation/stringtodatemapping.adoc[String to Date]
-.. link:documentation/collectionandarraymapping.adoc[Collections and Arrays]
-.. link:documentation/mapbackedproperty.adoc[Map Backed Property Mapping]
-.. link:documentation/proxyhandling.adoc[Proxy Objects]
+== 如何映射不同的类型?
+.. link:documentation/enum.adoc[枚举类型]
+.. link:documentation/stringtodatemapping.adoc[字符串转化成日期]
+.. link:documentation/collectionandarraymapping.adoc[集合和数组映射]
+.. link:documentation/mapbackedproperty.adoc[映射map中的备用属性]
+.. link:documentation/proxyhandling.adoc[代理对象]
 
-== What if i need to customise the mapping?
-.. link:documentation/customconverter.adoc[Custom Converters]
-.. link:documentation/custombeanfactories.adoc[Custom Bean Factories]
-.. link:documentation/customCreateMethod.adoc[Custom Create Methods]
-.. link:documentation/custommethods.adoc[Custom get() set() Methods]
-.. link:documentation/expressionlanguage.adoc[Expression Language]
+== 如何自定义映射?
+.. link:documentation/customconverter.adoc[自定义转化器]
+.. link:documentation/custombeanfactories.adoc[自定义对象工厂类]
+.. link:documentation/customCreateMethod.adoc[自定义创建方法]
+.. link:documentation/custommethods.adoc[自定义get() set()方法]
+.. link:documentation/expressionlanguage.adoc[表达式语言]
 
-== Extra
-.. link:documentation/configuration/logging.adoc[Logging]
-.. link:documentation/events.adoc[Event Listening]
-.. link:documentation/metadata.adoc[Metadata Query Interface]
+== 附录
+.. link:documentation/configuration/logging.adoc[日志]
+.. link:documentation/events.adoc[事件监听]
+.. link:documentation/metadata.adoc[元数据查询接口]
 
-== 3rd Party
-.. link:documentation/springintegration.adoc[Spring Integration]
-.. link:documentation/springBootIntegration.adoc[Spring Boot Integration]
+== 第三方集成
+.. link:documentation/springintegration.adoc[集成 Spring]
+.. link:documentation/springBootIntegration.adoc[集成 Spring Boot]
 .. link:documentation/jaxb.adoc[JAXB]
 
-== Other
-.. link:documentation/faq.adoc[FAQ]
-.. link:documentation/examples.adoc[Examples]
+== 其他
+.. link:documentation/faq.adoc[常见问题]
+.. link:documentation/examples.adoc[示例]
 
-== Migration
-.. link:migration/v5-to-v6.adoc[v5 to v6]
-.. link:migration/v6-to-v61.adoc[v6.0.0 to v6.1.0]
-.. link:migration/v61-to-v62.adoc[v6.1.0 to v6.2.0]
-.. link:migration/v62-to-v63.adoc[v6.2.0 to v6.3.0]
+== 迁移
+.. link:migration/v5-to-v6.adoc[从v5 升级到 v6]
+.. link:migration/v6-to-v61.adoc[从v6.0.0 升级到 v6.1.0]
+.. link:migration/v61-to-v62.adoc[从v6.1.0 升级到 v6.2.0]
+.. link:migration/v62-to-v63.adoc[从v6.2.0 升级到 v6.3.0]
 
-== Schema
-.. link:https://dozermapper.github.io/schema/bean-mapping.xsd[Mapping XSD]
-.. link:https://dozermapper.github.io/schema/dozer-spring.xsd[Spring4 XSD]
-.. link:https://dozermapper.github.io/user-guide.pdf[User's Guide PDF]
+== Schema 文件
+.. link:https://dozermapper.github.io/schema/bean-mapping.xsd[映射 XSD文件]
+.. link:https://dozermapper.github.io/schema/dozer-spring.xsd[Spring4 XSD文件]
+.. link:https://dozermapper.github.io/user-guide.pdf[用户手册PDF]
 
-== Eclipse Plugin
-.. link:documentation/eclipse-plugin/installation.adoc[Installation]
-.. link:documentation/eclipse-plugin/usage.adoc[Usage]
-... link:documentation/eclipse-plugin/usage-xml.adoc[via XML]
-... link:documentation/eclipse-plugin/usage-editor.adoc[via Editor]
+== Eclipse 插件
+.. link:documentation/eclipse-plugin/installation.adoc[安装]
+.. link:documentation/eclipse-plugin/usage.adoc[使用]
+... link:documentation/eclipse-plugin/usage-xml.adoc[XML的使用]
+... link:documentation/eclipse-plugin/usage-editor.adoc[Editor的使用]

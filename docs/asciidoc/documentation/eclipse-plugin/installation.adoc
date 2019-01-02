@@ -1,34 +1,29 @@
-== Prerequisites
-The Plugin currently depends on
+== 先决条件
+该插件当前依赖于
 
-* link:http://www.eclipse.org/webtools/[WTP 3.0.2 or latest]
+* link:http://www.eclipse.org/webtools/[WTP 3.0.2 以上]
 
-=== Compatibility
-Plugin is supported and been tested on the following IDEs
+=== 兼容性
+插件在如下的IDE中受支持和测试。
 
 * link:http://www.eclipse.org[Eclipse 3.6]
 * link:http://www.ibm.com/developerworks/rational/library/10/whats-new-in-rational-software-architect-8/[RAD
 RSA 8.0.1]
 
-=== Installation
-The Dozer Plugin-feature can be installed and updated using the Eclipse
-Update Manager.
+=== 安装
+Dozer 插件特性可以使用Eclipse Update Manager 进行安装和更新。
 
-* Add a new Update-URL:
+* 增加一个新的 Update-URL:
 +
 [source,prettyprint]
 ----
 http://dozer.sourceforge.net/eclipse-plugin
 ----
 
-Select all required dependencies and install the plugin.
+选择所有需要的依赖，然后安装插件。
 
-Alternatively you can download the package at
-https://sourceforge.net/project/showfiles.php?group_id=133517[sourceforge]
-and unzip it in your eclipse installation folder. You might have to
-enable the Plugin after starting Eclipse. This can be done at Help >
-Software Updates > Manage Configuration.
+此外你还可以通过下载包在
+https://sourceforge.net/project/showfiles.php?group_id=133517[sourceforge]，然后将其解压在你的 eclipse 安装文件夹中。你可能需要在启动Eclipse之后启用该插件。这可以通过Help > Software Updates > Manage Configuration 实现。
 
-After installation is done you should see a little red dozer-icon on all
-your mapping-xml files. +
+当安装完成之后你将看到一个红色的 dozer-icon 在所有你的映射文件中。+
 image:../../images/eclipse-dozerfile.gif[image]

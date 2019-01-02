@@ -1,24 +1,17 @@
-== Mapping Concepts
-=== Assembler Pattern
-Dozer can be used as an
+== 映射概念
+=== 装配器模式
+Dozer 可以被当做装配器进行使用
 http://www.martinfowler.com/eaaCatalog/dataTransferObject.html[Assembler]
-. Martin Fowler has a great explanation of why and when you would use an
+。 Martin Fowler 有一个很好为什么以及何时需要使用装配器
 http://www.martinfowler.com/eaaCatalog/dataTransferObject.html[Assembler]
-. Basically, it is a way to take multiple fine grain objects and create
-one coarse grain object used for data transfer. As long as you have
-mappings defined for each of your fine grained objects to your coarse
-grain object you can call the mapper multiple times to achieve the
-desired assembler pattern.
+。 主要在传递中将多个细颗粒化的对象拼装成一个粗粒度的对象。一旦你在细粒度和粗粒度的对象之间建立的映射，你就可以通过多次的调用映射器来实现装配器模式。
 
 [source,java,prettyprint]
 ----
 mapper.map(sourceA, ClassB.class);
 ----
 
-Let's say that ClassA, ClassB, and ClassC all map to ClassD. First
-create these individual mappings in the mapping file. Next, call the
-mapper once for each mapping. Note that this would also work in a
-bi-directinonal manner.
+例如我们需要将ClassA, ClassB, 和 ClassC 所有都映射到 ClassD。首先需要在映射文件中创建这些独立的映射。接着针对每次映射调用映射器。注意这些映射可以使用双向方式。
 
 [source,java,prettyprint]
 ----

@@ -1,6 +1,5 @@
-== Indexed Property Mapping
-Fields that need to be looked up or written to by indexed property are
-supported.
+== 索引属性映射
+需要通过索引属性进行查找或者修改的域都支持。
 
 [source,xml,prettyprint]
 ----

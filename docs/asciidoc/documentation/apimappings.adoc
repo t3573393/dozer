@@ -1,31 +1,15 @@
-== API Mappings
-=== XML Mapping Flaws
-XML-based approach is stable and is used in many production projects.
-However, it imposes several limitations.
+== API 映射
+=== XML 映射的缺点
+基于XML的方法是稳定，而且已经被使用在很多生产项目中。然而其会产生一些限制。
 
-* First, and most important, is that it can not be dynamically
-generated. All XML mappings should be present on Dozer start-up and can
-not be modified afterwards. There are tricky ways, when you can generate
-and put mappings to the file system by your own templating engine, but
-this approach is not supported by Dozer itself. By generating custom
-mappings you are able to automate repetitive chunks of low-level Dozer
-language.
-* Second problem is that you are forced to duplicate all of your Bean
-class names in Xml mappings. This leads to lots of typing and copy-paste
-programming. This can be partly compensated by use of Expression
-Language inside Xml, but it is not solving all of the problems.
-* Refactoring support is limited as IDE should keep track of class names
-in Xml files and change them when you rename or move the referenced
-class. Auto-completion support is also not available in all IDEs.
+* 首先最重要的是它不能动态的生成。所有的XML映射文件都应该在Dozer启动之前被提供，并且之后不能被修改。也可以通过一些取巧的方式，你可以通过自己的模板引擎生成和放置映射文件到文件系统中，这个方法目前Dozer本身不提供。通过生成自定义的映射文件，你能够将自动完成大块的低级的Dozer语言。
+* 第二个问题是你将强制复制你所有的类名称在XML映射文件中。这将导致大量的录入和复制粘贴式的编码。这些内容可部分通过在XML文件中使用表达式语言进行补偿，但是这不能解决大多数的问题。
+* 重构的支持只限定于IDE能够追踪在XML中的类名，并且在其被重命名或者是移动引用类是能够修改它。自动完成提示也不能够很好的在所有IDES中被支持。
 
-=== API Mappings
-API mappings are intended to solve all of the mentioned problems. To
-preserve backwards compatibility API mappings can be combined with
-existing Xml mappings. In fact some parts of the configuration (e.g.
-global configuration block) are only possible to express in Xml format.
+=== API 映射
+API 映射是被用来解决上面提到的问题。为了保留向后兼容性，API映射能够和现有的XML映射相结合。实际上仍然有一些配置部分只可能通过XML的格式进行表达。(例如：全局配置块)
 
-To get a feeling of what are these mappings take a look at the following
-code example.
+为了大致了解这些映射是如何实现的，可以通过查看如下的示例代码：
 
 [source,java,prettyprint]
 ----
@@ -73,8 +57,7 @@ public class MyClass {
 }
 ----
 
-Constructed builder object should be then passed to `DozerBeanMapperBuilder`.
-It is possible to add multiple Builder classes.
+构建者对象应该被传递到`DozerBeanMapperBuilder`。其可能被添加多个构建者对象。
 
 [source,java,prettyprint]
 ----

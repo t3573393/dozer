@@ -1,12 +1,5 @@
-== Copying By Object Reference
-Dozer supports copying an object by reference. No
-conversion/transformation is done for such objects. This approach allows
-to decrease a number of object allocations, but is applicable only when
-Java Beans are to be thrown away (Garbage Collected) after
-transformation. This approach is generally recommended for performance
-tuning of the mapping process when possible. Make sure that both object
-types are the same or you will run into casting problems. The default
-value is 'false'.
+== 通过引用进行对象复制
+Dozer 支持通过引用进行对象复制。对这些对象没有进行转化。这个方法能够减少一些对象的分配，而这些仅仅适用于当Java Beans 对象在转化之后丢弃(回收)的情况。这个方法通常被用来调整映射过程中的性能。确保对象类型是一样的，或者将会导致转化错误的问题。默认这个值为'false'。
 
 [source,xml,prettyprint]
 ----
@@ -16,8 +9,7 @@ value is 'false'.
 </field>
 ----
 
-This is also supported at the class level. Just define the classes you
-want to be copied by reference in the configuration block.
+这也支持类级别的定义。只需要在配置块中定义你需要通过引用进行复制的类。
 
 [source,xml,prettyprint]
 ----
@@ -30,8 +22,7 @@ want to be copied by reference in the configuration block.
 </configuration>
 ----
 
-On the class level wildcard expressions are allowed. Copy by reference
-is applied via mask, which can inlcude multiple wildcard (*) characters.
+在类级别定义中也支持通配符表达式。引用复制是通过掩码的方式的，因此可以包含多个通配符号(*)。
 
 [source,xml,prettyprint]
 ----
@@ -47,13 +38,10 @@ is applied via mask, which can inlcude multiple wildcard (*) characters.
 </configuration>
 ----
 
-=== Referencing self (this) in a field mapping
-Using a field mapping it is possible to map where N == 0 (self, or
-this). In the following example SimpleAccount is mapped to Address. It
-is also mapped to Account. Suppose Address was an attribute on Account.
-How could we map the values on SimpleAccount to that property? The
-answer is to use the keyword (this) to denote using the class being
-mapped as the source object.
+=== 在属性映射中引用自身(this)
+使用属性映射的时候可能需要支持 N == 0 的情况(自身, 或者
+this)。这下面的例子中 SimpleAccount 被映射到 Address。此外它也被映射到 Account。假设 Address 是 Account中的属性。
+我们如何映射SimpleAccount中的值到它的属性中？答案是可以使用关键字(this)来表明使用该类作为映射的源对象。
 
 [source,xml,prettyprint]
 ----

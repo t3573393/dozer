@@ -1,42 +1,19 @@
-== Annotation Mappings
-=== Why Annotations?
-One of the downsides of using Dozer for the long time was Xml. Since
-Dozer started during Xml-hype years more than five years ago that was
-pretty obvious choice back then. After that Java 5 brought us
-annotations and new industry accepted style of configuring behaviour are
-Domain-Specific Languages. DSL-like support is provided in form of
-mapping API, but since version 5.3.2 Dozer starts providing annotations
-support as well.
+== 注释映射
+=== 为什么使用注释?
+一度长时间来Dozer都是使用XML进行配置。直到五年前还是XML高度兴盛的时期，之后才有了更加优雅明显的好选择。直到Java5带来了注释，新的产业届接受了基于领域定义语言的配置方式。DSL类似形式的映射API直到5.3.2 Dozer提供了注释之后提供了支持。
 
-The obvious reasons to use annotations is to avoid duplicating field and
-method names in your mapping code. The annotation can be put onto the
-mapped property itself thus reducing the amount of code. However there
-are cases when annotations should be avoided or even impossible to use.
-Some of them are the following:
+最明显使用注释的原因是避免了使用重复的属性和方法名称在你的映射代码中。注释可以放到映射属性上从而减少代码数量。然而仍然有一些使用注释的场景需要避免或者是不能够被使用。其中包括如下所示：
 
-* You are mapping classes, which are not under your control, but
-provided in libraries;
-* The mappings are quite complex and require many configurations;
+* 你映射的一些类，不在你的控制之下，但是是通过类库进行提示;
+* 映射相当复杂，需要很多配置信息;
 
-In the first case you could be mapping JAXB generated entities or
-third-party DTOs and have no possibility to put annotations. In the
-second case there is a choice of putting lots of multi-line annotations
-or isolating the mapping code with certain duplication of entity names.
-Overannotated beans could be problematic to read and understand.
+你第一场景中你将映射 JAXB 生成的实体或者是第三方的DTOs， 你没有可能将注释放到其中。在第二个场景中需要放置过多行的注释或者是为确定重复实体名称使用孤立的映射代码。过度的注释beans将会给阅读和理解带来问题。
 
-=== Usage
-*WARNING:* Annotation support in Dozer is experimental and does not
-cover complex use cases yet. However it may be useful to implement that
-simplest mappings you have had to do in Xml or API before.
+=== 用法
+*警告:* Dozer中的注释支持是实验性的不支持复杂的使用场景。然而它确是在XML或者是API之前最简单的实现。
 
-The idea is very simple. You put @Mapping annotation either on getter of
-field directly. If Dozer finds that it adds a bi-directional mapping. It
-means that putting annotation once will create mappings for both
-conversion types. Type conversions (e.g. String-Long) will be chosen
-automatically. Global custom converters are resolved as well.
-Annotations work only if a conversion is subject to wildcard rule
-(active by default). The following example demonstrates annotations in
-action.
+这个主意是简单的。你可以直接放置 @Mapping 注释在属性的 getter 方法上。 如果 Dozer 发现该注释将会增加双向的映射。这意味着一次放注释将会创建两个类型的映射。类型转化将被自动选择(例如：字符串-长整型)。全局的自定义转化器也能被解析。
+注释只有在采用通配符的情况才能生效。(默认被激活) 如下的例子展示了注释的使用。
 
 [source,java,prettyprint]
 ----
@@ -80,13 +57,6 @@ public class TargetBean {
 }              
 ----
 
-Mapping the given beans with Dozer will result in all three fields being
-mapped. Property "name" will be mapped by naming convention. Property
-"id" will be transformed to "pk". Field "data" will be moved to
-"binaryData". Do not worry about _private_ modifier; it will be handled
-automatically.
+使用 Dozer 映射给定的 beans 将会导致三个属性都会被映射。name属性将会通过命名转化规则进行映射。id属性将会被传递到"pk"。data域将会被移动到 "binaryData". 不必担心 _private_ 修饰符; 它将自动被处理。
 
-Currently Dozer offers only one annotation, but the next ones will be
-added in following releases. As for now you can mix and match all
-flavours of mapping types to achieve the desired effect: Xml, API and
-Annotations.
+当前 Dozer 只提供了一个注释， 但是以后的版本中将会添加更多的支持。因而你可以采用混合的方式来使用各种不同的类型来达到所需要的效果: Xml, API 和 注释。

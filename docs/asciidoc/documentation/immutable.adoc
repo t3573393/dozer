@@ -1,9 +1,6 @@
-== Mapping immutable types
-You can create objects when constructor is not available, or when
-there is no no-args constructor in the class. Feature is designed
-for mapping immutable types. To use it, at the mapping level add
-an option to skip the constructor, then at the field level choose
-to inject the value directly to the field, skipping the setter.
+== 映射不可变类型
+你可以当类中构造函数不可用，或者是没有无参数构造函数时候创建对象。这个特性是被用来映射不可变类型。
+为了使用这个特性，你需要在映射级别中添加跳过构造函数的选项，然后在域级别上选择将值直接注入到域上，跳过 setter 方法。
 
 [source,xml,prettyprint]
 ----

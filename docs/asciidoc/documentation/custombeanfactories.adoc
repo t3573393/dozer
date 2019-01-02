@@ -1,14 +1,7 @@
-== Custom Bean Factories
-You can configure Dozer to use custom bean factories to create new
-instances of destination data objects during the mapping process. By
-default Dozer just creates a new instance of any destination objects
-using a default constructor. This is sufficient for most use cases, but
-if you need more flexibility you can specify your own bean factories to
-instantiate the data objects.
+== 自定义对象工厂类
+你可以配置 Dozer 在映射过程中使用自定义的对象工厂来创建新的目标对象实例。缺省情况下 Dozer 只用该目标对象中的默认构造器创建新的实例。这对于大多数情况下是足够的，但是如果你如果需要更多灵活性，你可以通过定义自己的对象工厂来构造数据对象。
 
-Your custom bean factory must implement the `com.github.dozermapper.core.BeanFactory`
-interface. By default the Dozer mapping engine will use the destination
-object class name for the bean id when calling the factory.
+你的自定义对象工厂必须实现 `org.dozer.BeanFactory` 接口。缺省情况下 Dozer 映射引擎将会使用目标对象的类名作为bean id参数调用改工厂类。
 
 [source,java,prettyprint]
 ----
@@ -18,13 +11,10 @@ public interface BeanFactory {
 }
 ----
 
-Next, in your Dozer mapping file(s) you just need to specify a
-`bean-factory` xml attribute for any mappings that you want to use a
-custom factory.
+接下来，在你的 Dozer 映射文件中你只需要定义一个
+`bean-factory` xml 属性在你需要使用自定义工厂中的映射中。
 
-In the following example, the `SampleCustomBeanFactory` will be used to
-create any new instances of the `InsideTestObjectPrime` java bean data
-object.
+在下面的例子中, `SampleCustomBeanFactory` 将会被用作创建任何`InsideTestObjectPrime` 数据对象的实例。
 
 [source,xml,prettyprint]
 ----
@@ -36,10 +26,7 @@ object.
 </mapping>
 ----
 
-If your factory looks up beans based on a different id than class name,
-you can specify a `factory-bean-id` xml attribute. At runtime the
-specified `factory-bean-id` will be passed to the factory instead of class
-name.
+如果你的工厂将会基于不同的id来查找java beans 而不是类名，你可以定义 `factory-bean-id` xml 属性。在运行时，定义的属性 `factory-bean-id` 将会替代类名传递到工厂类中。
 
 [source,xml,prettyprint]
 ----
@@ -51,10 +38,8 @@ name.
 </mapping>
 ----
 
-=== Specifying Default Factories
-Alternatively, bean factories can be specified in the default
-configuration section of any Dozer mapping file(s). The default factory
-would be used for any mappings in that file.
+=== 定义缺省的工厂类
+可供选择的情况下，bean工厂可以被定义到缺省的配置部分在任何的 Dozer 映射文件中。缺省的工厂将被使用到在该文件中的所有映射。
 
 [source,xml,prettyprint]
 ----
@@ -66,8 +51,7 @@ would be used for any mappings in that file.
 </configuration>
 ----
 
-Bean factories can also be specified at the mapping level. The specified
-factory would be used for `class-a` and `class-b`.
+Bean 工厂也可以被定义到类级别。定义的工厂将作用于 `class-a` 和 `class-b`之间。
 
 [source,xml,prettyprint]
 ----
@@ -77,9 +61,8 @@ factory would be used for `class-a` and `class-b`.
 </mapping>
 ----
 
-=== Spring bean factory injection
-Bean factories can be injected via Spring or similar inversion of
-control techniques.
+=== Spring bean 工厂的注入
+Bean 工厂可以通过spring或者类似的控制反转技术进行注入。
 
 [source,xml,prettyprint]
 ----
@@ -106,5 +89,4 @@ control techniques.
 </beans>
 ----
 
-By defining your factories as Spring beans you can then inject them into
-the `Mapper` instance.
+通过定义你的工厂为spring beans，你可以将他们注入到 `Mapper` 实例中。

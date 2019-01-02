@@ -1,65 +1,34 @@
-== Why Map?
-A mapping framework is useful in a layered architecture where you are
-creating layers of abstraction by encapsulating changes to particular
-data objects vs. propagating these objects to other layers (i.e.
-external service data objects, domain objects, data transfer objects,
-internal service data objects). A mapping framework is ideal for using
-within Mapper type classes that are responsible for mapping data from
-one data object to another.
+== 为什么需要映射?
+映射框架在层级架构中作用大，当你需要创建一个抽象的层用来封装针对特定数据对象的修改，并将这些对象传递到其他层。(例如 外部服务数据对象、域对象、数据传输对、内部服务数据对象)。映射框架完美的使用包含映射器类型的类进行将数据从一个对象映射到另外一个。
 
-For distributed systems, a side effect is the passing of domain objects
-between different systems. Typically, you won't want internal domain
-objects exposed externally and won't allow for external domain objects
-to bleed into your system.
+针对分布式系统，传递不同的域对象在不同系统中是一个不好处理的问题。
+通常，你不想把内部的域对象暴露给外部，也不允许外部的域对象渗透入你的系统。
 
-Mapping between data objects has been traditionally addressed by hand
-coding value object assemblers (or converters) that copy data between
-the objects. Most programmers will develop some sort of custom mapping
-framework and spend countless hours and thousands of lines of code
-mapping to and from their different data object.
+在两个数据对象上进行映射传统方法是通过硬编码值对象组装（转化器）的方式在对象之间进行数据复制。
+大多数的程序员会开发一些自定义的映射框架，以及花费海量的时间和成千上万行代码在他们不同的数据对象上进行复制。
+一个通用的映射框架解决这些问题。Dozer是一个开源的映射框架，包含健壮性，通用性，灵活性，可重用和可配置性。
 
-A generic mapping framework solves these problems. Dozer is an open
-source mapping framework that is robust, generic, flexible, reusable,
-and configurable.
+数据对象映射在层级服务导向的架构中是一个重要组成部分。
+挑选一个映射层需要小心。需要重要关注可维护性和在层级间的数据对象关联映射的开销。
 
-Data object mapping is an important part of layered service oriented
-architectures. Pick and choose the layers you use mapping carefully. Do
-not go overboard as there is maintenance and performance costs
-associated with mapping data objects between layers.
+=== 平行对象层级
+为什么应用需要支持平行对象层级，其中包含不同的原因。例如：
 
-=== Parallel Object Hierarchies
-There could be different reasons of why application should support
-parallel object hierarhchies. To name a few:
+* 和外部代码集成
+* 序列化的需要
+* 框架集成
+* 架构层的拆分
 
-* Integration with External Code
-* Serialization Requirements
-* Framework Integration
-* Separation of Architectural Layers
+在一些场景中其有效率的保证你的代码基于在不是你直接控制的频繁修改的对象层级。在其中Dozer扮演着在应用和外部对象之间的桥梁。
+由于映射是基于反射基础上的，因此完全不需要破坏你的API。
+例如一个对象从数字转化为字符串，这代码将继续可用，由于其被自动解析。
 
-In some cases it is efficient to guard your code base from frequently
-changing object hierarchy, which you do not control directly. In this
-case Dozer serves as a bridge between application and external objects.
-As mapping is performed in reflective manner not all changes break your
-API. For example if object changes from Number to String the code will
-keep working as this is resolved automatically.
+一些框架强加序列化约束，导致不允许直接发送任何java对象。一个著名的例子是Google Web Toolkit (GWT) 框架，其约束开发者不能通过标记序列化的方法将对象发送给JavaScript。
+Dozer帮助其转化富领域模型转化为展示模型，从而满足 GWT的序列化需求。
 
-Some frameworks impose Serialization constraints, which does not allow
-sending any Java objects through the wire. One of the popular examples
-is Google Web Toolkit (GWT) framework, which restricts developer to
-sending only objects compiled to JavaScript and marked as Serializable.
-Dozer helps to convert Rich Domain Model to Presentation Model, which
-satisfies GWT serialization requirements.
+Dozer 优雅的集成了其他框架例如 Apache XmlBeans 和 JAXB 的实现。
+通过使用提供的工厂类，领域模型和xml对象上的转化和纯对象到对象之间映射的定义方式一样。
 
-Dozer integrates nicely with frameworks use JAXB implementations.
-With help of provided factory classes, conversion
-between domain model and Xml objects is defined in the same way as plain
-object to object mappings.
-
-In complex enterprise application it is often valuable to separate
-design to several architectural layers. Each of them would reside on its
-own abstraction level. A typical simplified example would be
-presentation, domain and persistence layers. Each of this layers could
-have own set of Java Beans representing data relevant for this layer. It
-is not necessary that all data will travel to the upper levels of
-architecture. For example the same domain object could have different
-mappings dependant of the presentation layer requirements.
+在复杂的企业应用中，将设计拆分到不同的架构层中是很有意义的。他们独自存在于他自己的抽象层中。
+一个经典的简单例子是展示层、领域层和持久层。每一层都包含自己的java bean来表示该层中的数据关系。
+所有数据是不需要直接传输到架构的最上层。例如相同的领域对象可能包含依赖于展示层的需要不同的映射。

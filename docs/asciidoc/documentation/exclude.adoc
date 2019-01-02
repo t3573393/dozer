@@ -1,7 +1,5 @@
-== Excluding Fields
-Dozer supports excluding fields from a mapping using the field-exclude
-tag. We also support field excludes going one-way as shown in the
-example.
+== 排除域
+Dozer 支持使用field-exclude标签在映射中将域进行排除。我们也支持单向的域排除，如下所示。
 
 [source,xml,prettyprint]
 ----
@@ -16,10 +14,8 @@ example.
 </field-exclude>
 ----
 
-=== Wildcard - excluding default field mappings
-There's also a flag (`wildcard`) set on class mapping which controls
-whether the default mapping (which applies to pair of properties of the
-same name) should be done. The default value is true. For example:
+=== 通配符 - 排除默认的域映射
+在类映射级别上有一个(`wildcard`)标记，用来控制是否默认的映射是否生效(作用于相同名称的属性)。默认值是true。例如:
 
 [source,xml,prettyprint]
 ----
@@ -33,15 +29,11 @@ same name) should be done. The default value is true. For example:
 </mapping>
 ----
 
-This configuration would cause only the fields `field1` in both classes
-to be mapped, even if both classes share a property with the same name
-called`field2`.
+这个配置将导致只有 `field1` 域在映射的两端生效，即使两个类中包含相同的名称的`field2`属性。
 
-=== Exclude Mapping Null Values
-You can bypass the mapping of null values. If this is specified, the
-dest field mapping is bypassed at runtime and the destination value
-setter method will not be called if the src value is null. This can be
-specified at the mapping or class level. For example:
+=== 排除映射 Null值
+你可以忽略null值。如果这个被定义且源值是null，则目标域映射将被忽略在运行时，目标值的setter方法将不被调用。
+这个也能通过在类级别上定义。例如:
 
 [source,xml,prettyprint]
 ----
@@ -55,7 +47,7 @@ specified at the mapping or class level. For example:
 </mapping>
 ----
 
-OR...
+或者...
 
 [source,xml,prettyprint]
 ----
@@ -70,11 +62,9 @@ OR...
 </mapping>
 ----
 
-=== Exclude Mapping Empty Strings
-You can bypass the mapping of empty String values. If this is specified,
-the dest field mapping is bypassed at runtime and the destination value
-setter method will not be called if the src value is an empty String.
-This can be specified at the mapping or class level. For example:
+=== 排除映射空字符串
+你可以忽略空字符串的映射。如果这个被定义且源值是空字符串，则目标域映射将被忽略在运行时，目标值的setter方法将不被调用。
+这个也能通过在类级别上定义。例如:
 
 [source,xml,prettyprint]
 ----
@@ -88,7 +78,7 @@ This can be specified at the mapping or class level. For example:
 </mapping>
 ----
 
-OR...
+或...
 
 [source,xml,prettyprint]
 ----

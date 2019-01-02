@@ -1,27 +1,18 @@
-== Collection and Array Mapping
-Dozer automatically maps between collection types and automatically
-performs any type conversion. Each element in the source collection is
-mapped to an element in the dest object. Hints are used to specify what
-type of objects are created in the destination collection. The following
-collection mapping is automatically handled by Dozer: (These are all
-bi-directional)
+== 集合和数组映射
+Dozer 在集合类型中进行自动映射和自动进行任何类型转化。源集合中的每个元素都映射到目标对象的一个元素中。
+Hints 被用来定义在目标集合中将创建什么类型的对象。如下类的集合类型将被Dozer自动处理: (这些都是双向的)
 
-* List to List
-* List to Array
-* Array to Array
-* Set to Set
-* Set to Array
-* Set to List
+* List 到 List
+* List 到 Array
+* Array 到 Array
+* Set 到 Set
+* Set 到 Array
+* Set 到 List
 
-=== Using Hints for Collection Mapping
-Hints are not required if you are using JDK 1.5 Generics or Arrays
-because the types can be autodetected by Dozer. But if you are not using
-generics or Arrays, to convert a Collection/Array to a Collection/Array
-with different type objects you can specify a Hint to let Dozer know
-what type of objects you want created in the destination list. If a Hint
-is not specified for the destination field, then the destination
-Collection will be populated with objects that are the same type as the
-elements in the src Collection.
+=== 使用 Hints 进行集合映射
+如果你使用JDK1.5的泛型或数组，不需要使用 Hint，因为这些类型能够被 Dozer 自动检测到。
+但是你如果没有使用泛型或数组，需要将一个集合数组转化到一个不同类型对象的集合数组，需要定义
+Hint 让Dozer 知道你想在目标列表中创建的数据类型。如果 Hint 没有被定义在目标域中，则目标集合中将使用和源集合中元素一样的数据类型。
 
 [source,xml,prettyprint]
 ----
@@ -33,86 +24,64 @@ elements in the src Collection.
 </field>
 ----
 
-Below is a summary of the mapping logic used when mapping Arrays, Sets,
-and Lists. This gives a breakdown of what happens when hints are or are
-not used.
+下面是对数组，集合，列表的映射逻辑的总结。以及给出了当hints没有被定义时候出现的问题。
 
 * List to List
-* ** Dest Hint req'd: NO
-** Dest Hint allowed: YES
-** If no dest hint specified: Dest list will contain the same data types
-in the source
-** If hint is speficied: Dest list will contain objects that match dest
-hint(s) type
+* ** 目标 Hint 强制需要: NO
+** 目标 Hint 允许: YES
+** 如果目标hint没有被定义: 目标列表中将使用和源列表中一样的数据类型
+** 如果 hint 被定义: 目标列表将包含匹配目标hint类型一样的对象
 
 * Array to List
-* ** Dest Hint req'd: NO
-** Dest Hint allowed: YES
-** If no dest hint specified: Dest list will contain the same data types
-in the source
-** If hint is speficied: Dest list will contain objects that match dest
-hint(s) type
+* ** 目标 Hint 强制需要: NO
+** 目标 Hint 允许: YES
+** 如果目标hint没有被定义: 目标列表中将使用和源列表中一样的数据类型
+** 如果 hint 被定义: 目标列表将包含匹配目标hint类型一样的对象
 
 * List to Array
-* ** Dest Hint req'd: NO
-** Dest Hint allowed: YES
-** If no dest hint specified: Dest array will contain data types defined
-by the array
-** If hint is speficied: Dest list will contain objects that match dest
-hint(s) type (only if Object Array)
+* ** 目标 Hint 强制需要: NO
+** 目标 Hint 允许: YES
+** 如果目标hint没有被定义: 目标数组中将使用和数组中定义一样的数据类型 
+** 如果 hint 被定义: 目标列表将包含匹配目标hint类型一样的对象(仅仅是对象数组)
 
 * Array to Array
-* ** Dest Hint req'd: NO
-** Dest Hint allowed: YES
-** If no dest hint specified: Dest array will contain data types defined
-by the array
-** If hint is speficied: Dest list will contain objects that match dest
-hint(s) type (only if Object Array)
+* ** 目标 Hint 强制需要: NO
+** 目标 Hint 允许: YES
+** 如果目标hint没有被定义: 目标数组中将使用和源列表中一样的数据类型
+** 如果 hint 被定义: 目标列表将包含匹配目标hint类型一样的对象(仅仅是对象数组)
 
 * Set to Set
-* ** Dest Hint req'd: NO
-** Dest Hint allowed: YES
-** If no dest hint specified: Dest list will contain the same data types
-in the source
-** If hint is speficied: Dest list will contain objects that match dest
-hint(s) type
+* ** 目标 Hint 强制需要: NO
+** 目标 Hint 允许: YES
+** 如果目标hint没有被定义: 目标列表中将使用和源列表中一样的数据类型
+** 如果 hint 被定义: 目标列表将包含匹配目标hint类型一样的对象
 
 * Array to Set
-* ** Dest Hint req'd: NO
-** Dest Hint allowed: YES
-** If no dest hint specified: Dest list will contain the same data types
-in the source
-** If hint is speficied: Dest list will contain objects that match dest
-hint(s) type
+* ** 目标 Hint 强制需要: NO
+** 目标 Hint 允许: YES
+** 如果目标hint没有被定义: 目标列表中将使用和源列表中一样的数据类型
+** 如果 hint 被定义: 目标列表将包含匹配目标hint类型一样的对象
 
 * Set to Array
-* ** Dest Hint req'd: NO
-** Dest Hint allowed: YES
-** If no dest hint specified: Dest array will contain data types defined
-by the array
-** If hint is speficied: Dest list will contain objects that match dest
-hint(s) type (only if Object Array)
+* ** 目标 Hint 强制需要: NO
+** 目标 Hint 允许: YES
+** 如果目标hint没有被定义: 目标数组中将使用和数组中定义一样的数据类型 
+** 如果 hint 被定义: 目标列表将包含匹配目标hint类型一样的对象(仅仅是对象数组)
 
 * List to Set
-* ** Dest Hint req'd: NO
-** Dest Hint allowed: YES
-** If no dest hint specified: Dest list will contain the same data types
-in the source
-** If hint is speficied: Dest list will contain objects that match dest
-hint(s) type
+* ** 目标 Hint 强制需要: NO
+** 目标 Hint 允许: YES
+** 如果目标hint没有被定义: 目标列表中将使用和源列表中一样的数据类型
+** 如果 hint 被定义: 目标列表将包含匹配目标hint类型一样的对象
 
 * Set to List
-* ** Dest Hint req'd: NO
-** Dest Hint allowed: YES
-** If no dest hint specified: Dest list will contain the same data types
-in the source
-** If hint is speficied: Dest list will contain objects that match dest
-hint(s) type
+* ** 目标 Hint 强制需要: NO
+** 目标 Hint 允许: YES
+** 如果目标hint没有被定义: 目标列表中将使用和源列表中一样的数据类型
+** 如果 hint 被定义: 目标列表将包含匹配目标hint类型一样的对象
 
-== Using JDK 1.5 Generics for Collection Mapping
-Hints are not required when JDK 1.5 Generics are used. To convert a
-Collection/Array to a Collection/Array with different type objects dozer
-can determine parameterized types at runtime.
+== 使用 JDK 1.5 泛型进行集合映射
+当使用JDK1.5泛型时候，Hints是不需要。将一个集合/数组转化成另外一个类型的集合/数组， dozer 能够在运行时检测到参数化的类型。
 
 [source,java,prettyprint]
 ----
@@ -144,9 +113,8 @@ public class UserGroupPrime {
 }
 ----
 
-=== Object Array to List (bi-directional)
-When converting an Object array to a List, by default the destination
-List will contain the same data type as the source Array.
+=== 对象数组到列表 (双向)
+当转化一个对象数组到一个列表，缺省情况下目标列表将包含有和源数组一样的数据类型。
 
 [source,xml,prettyprint]
 ----
@@ -157,8 +125,7 @@ List will contain the same data type as the source Array.
 </field>
 ----
 
-Use a hint for data type conversion. Because a hint is specified, the
-destination List will contain String elements instead of Integers.
+使用hint来处理数据类型转化。当 hint 被定义时，目标列表将包含字符串元素，而不是数字。
 
 [source,xml,prettyprint]
 ----
@@ -170,9 +137,8 @@ destination List will contain String elements instead of Integers.
 </field>
 ----
 
-=== Primitive Array to Primitive Array (bi-directional)
-When converting an Object array to an Array, by default the destination
-Array will contain the same data type as the source Array.
+=== 原生数组到原生数组(双向)
+当转化一个对象数组到一个数组，缺省情况下目标列表将包含有和源数组一样的数据类型。
 
 [source,xml,prettyprint]
 ----
@@ -183,17 +149,12 @@ Array will contain the same data type as the source Array.
 </field>
 ----
 
-=== Cumulative vs. Non-Cumulative List Mapping (bi-directional)
-If you are mapping to a Class which has already been initialized, dozer
-will either 'add' or 'update' objects to your List. If your List or Set
-already has objects in it dozer checks the mapped List, Set, or Array
-and calls the contains() method to determine if it needs to 'add' or
-'update'. This is determined using the relationship-type attribute on
-the field tag. The default is 'cumulative'. relationship-type can be
-specifed at the field mapping, class mapping, or global configuration
-level.
+=== 累计和非累积的集合映射(双向)
+当你需要映射的一个类已经被初始化，dozer可以使用新增或更新对象到你的列表中。
+如果你的列表或者集合已经包含对象在其中，dozer将检查映射的列表、集合或数组，和调用 contains() 方法来决定是否需要新增或者修改。
+这是通过使用域标签中的relationship-type 属性来决定的。默认是累计的。relationship-type 可以被定义在域映射、类映射或者全局配置级别中。
 
-global configuration level....
+全局配置级别....
 
 [source,xml,prettyprint]
 ----
@@ -204,7 +165,7 @@ global configuration level....
 </mappings>
 ----
 
-class mapping level....
+类映射级别....
 
 [source,xml,prettyprint]
 ----
@@ -220,11 +181,11 @@ class mapping level....
 </mappings>
 ----
 
-field mapping level....
+域映射级别....
 
 [source,xml,prettyprint]
 ----
-<!-- objects will always be added to an existing List -->
+<!-- 对象总是被添加到已经存在的列表中 -->
 <field relationship-type="cumulative">
     <a>hintList</a>
     <b>hintList</b>
@@ -232,26 +193,20 @@ field mapping level....
     <b-hint>com.github.dozermapper.core.vo.TheFirstSubClassPrime</b-hint>
 </field>
 
-<!-- objects will updated if already exist in List, added if they are not present -->
+<!-- 如果列表中存在对象将被更新，如果不存在将被添加 -->
 <field relationship-type="non-cumulative">
     <a>unequalNamedList</a>
     <b>theMappedUnequallyNamedList</b>
 </field>
 ----
 
-*Note:* if you do not define custom _equals()_ and _hashCode()_ methods
-non-cumulative option will not function properly, as Dozer will fail to
-determine object equality and will rely on JDK generated object Ids. In
-default case two instances of a class are always treated as different
-and update will not occure.
+*Note:* 如果你没有定义自定义的 _equals()_ 和 _hashCode()_ 方法，非累计选项将不能正常工作，因为Dozer将错误的判断对象的相等和依赖于JDK产生的对象ids。
+缺省情况下一个类的两个实例将被区别开来，将不会导致更新。
 
-=== Removing Orphans
-Orphans are elements which exist in a destination collection that did
-not exist within the source collection. Dozer will remove orphans by
-calling the 'remove' method on actual orphans of the underlying
-destination collection; it will not clear all. To determine elements
-which are orphans dozer uses the contains() method to check if the
-results contains orphans. The default setting value is false.
+=== 移除无效的元素
+无效的元素指的是存在于目标集合而不存在于源集合中。
+Dozer 将删除无效元素通过调用底层的目标集合中的remove方法在实际无效元素上。它将不会清空所有。
+dozer使用contains方法来检测结果中是否包含无效元素。缺省的设定是 false。
 
 [source,xml,prettyprint]
 ----

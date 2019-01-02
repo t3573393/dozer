@@ -1,15 +1,15 @@
-== Expression Language
-=== Usage
-Dozer provides optional support for standard java expression language (javax.el).
+== 表达式语言
+=== 用法
+Dozer 提供了可选的标准java表达式语言的支持(javax.el)。
 
-Current support for expressions is start-up time only.
-Expressions are *not* resolved during each mapping, but rather during mapping loading time.
-Each attribute or node value can contain a valid EL expression ${}.
+当前支持的表达式仅刚起步阶段。
+表达式不会在每次映射的时候被解析，而是在映射加载阶段。
+每一个属性和节点的值都包含一个可用的EL 表达式 ${}。
 
-Dozer supports any EL implementation written against javax.el standard API.
-Functionality is tested with 'glassfish' internally, but other EL providers should work as well.
+Dozer 支持任何 EL 的实现而不仅仅是标准的 javax.el API。
+在内部已经使用'glassfish'进行了功能测试，但是其他的EL提供者也能正常使用。
 
-You can define global variables for the mapper in *variables* configuration block.
+你能够定义全局的变量在映射的*variables* 配置块中。
 
 [source,xml,prettyprint]
 ----
@@ -25,9 +25,9 @@ You can define global variables for the mapper in *variables* configuration bloc
 </mapping>
 ----
 
-=== Enabling
-EL support is an optional feature.
-To enable it, you must add the below dependencies to your classpath:
+=== 启用
+EL 是所支持的一个可选的功能特性。
+为了启用它，你必须添加如下的依赖在你的 classpath:
 
 [source,xml,prettyprint]
 ----
@@ -43,7 +43,7 @@ To enable it, you must add the below dependencies to your classpath:
 </dependency>
 ----
 
-It is this enabled on the Mapper by the below fluent construct:
+可以通过使用如下流式构造映射的方法启用。
 
 [source,java,prettyprint]
 ----

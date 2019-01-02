@@ -1,22 +1,11 @@
-== Custom Converters
-Custom converters are used to perform custom mapping between two
-objects. In the Configuration block, you can add some XML to tell Dozer
-to use a custom converter for certain class A and class B types. When a
-custom converter is specified for a class A and class B combination,
-Dozer will invoke the custom converter to perform the data mapping
-instead of the standard mapping logic.
+== 自定义转化器
+自定义转化器应用于自定义于两个对象之间的映射。在配置块中，你可以添加一些XML来告诉 Dozer在确定的A类和B类之间使用自定义转化器。
+当在A类和B类组合中使用了自定义转化器，Dozer 将会用自定义转化器进行数据映射而不是原来的标准映射逻辑。
 
-Your custom converter must implement the `com.github.dozermapper.core.CustomConverter`
-interface in order for Dozer to accept it. Otherwise an exception will
-be thrown.
+你的自定义转化器必须实现 `org.dozer.CustomConverter` 接口从而让 Dozer 能够接受它。或者将会抛出异常。
 
-Custom converters are shared across mapping files. This means that you
-can define them once in a mapping file and it will be applied to all
-class mappings in other mapping files that match the Class A - Class B
-pattern. In the example below, whenever Dozer comes across a mapping
-where the src/dest class match the custom converter definition, it will
-invoke the custom converter class instead of performing the typical
-mapping.
+自定义转化器在多个映射文件之间共享。这意味着你可以在一个映射文件中定义之后，它将作用于所有的其他映射文件中针对匹配类型A和类型B的模式。
+在如下的例子中，Dozer使用一个匹配源头和目标的自定义转化器定义，它将调用自定义转化器类而不是传统的映射。
 
 [source,xml,prettyprint]
 ----
@@ -46,9 +35,7 @@ mapping.
 </mappings>
 ----
 
-Custom converters can also be specified at the individual field level.
-In the example below, Dozer will invoke the custom converter to perform
-the field mapping.
+自定义转化器可以被定义在独立的属性级别。在如下的例子中，Dozer将调用自定义转化器来进行属性映射。
 
 [source,xml,prettyprint]
 ----
@@ -62,9 +49,7 @@ the field mapping.
 </mapping>
 ----
 
-Custom converter 'instances' can be reused at the individual field
-level. In the example below, Dozer will invoke the custom converter to
-perform the field mapping.
+自定义转化器实例可以在独立属性级别复用。在如下的例子中，Dozer 将调用自定义转化器进行属性映射。
 
 [source,xml,prettyprint]
 ----
@@ -78,8 +63,7 @@ perform the field mapping.
 </mapping>
 ----
 
-`CustomConverter` instances can be provided during configuration of `Mapper` via
-`DozerBeanMapperBuilder#withCustomConverter(..)` method.
+自定义转化器实例可以通过使用`DozerBeanMapperBuilder#withCustomConverter(..)` 方法在`Mapper`对象上进行配置。
 
 [source,xml,prettyprint]
 ----
@@ -102,11 +86,9 @@ perform the field mapping.
 </beans>
 ----
 
-Sample custom converter implementation:
+自定义转化器实现样例:
 
-*Note:* Custom Converters get invoked when the source value is `null`, so
-you need to explicitly handle `null` values in your custom converter
-implementation.
+*注意:* 自定义转化器当源对象为null时候也会被调用，因此你需要显示的处理null值在你的自定义转化器实现中。
 
 [source,java,prettyprint]
 ----
@@ -147,8 +129,7 @@ public class TestCustomConverter implements CustomConverter {
 }
 ----
 
-CustomConverters can also be injected into the `Mapper` if you
-need to do some manipulation with them before they are used in dozer.
+如果你需要在它们被dozer使用之前做一些处理，可以将自定义转化器注入到`Mapper`中。
 
 [source,xml,prettyprint]
 ----
@@ -176,13 +157,8 @@ need to do some manipulation with them before they are used in dozer.
 </beans>
 ----
 
-=== Support for Array Types
-You can specify a custom converter for Array types. For example, if you
-want to use a custom converter for mapping between an array of objects
-and a String you would use the following mapping notation. Dozer
-generically uses `ClassLoader.loadClass()` when parsing the mapping files.
-For arrays, java expects the class name in the following format:
-`[Lcom.github.dozermapper.core.vo.SimpleObj`;
+=== 支持数组类型
+你可以针对数组类型定义一个自定义转化器。例如，你想使用一个自定义转化器来将数组对象和字符串进行映射，你将使用如下的映射注释。Dozer 通常使用 `ClassLoader.loadClass()` 当解析映射文件的时候。针对数组，java通常希望类名称为如下的格式:`[Lorg.dozer.vo.SimpleObj`;
 
 [source,xml,prettyprint]
 ----
@@ -192,13 +168,9 @@ For arrays, java expects the class name in the following format:
 </converter>
 ----
 
-=== Support for primitives
-You can specify a custom converter for primitive types. Just use the
-primitive wrapper class when defining the custom converter mapping. In
-the following example, Dozer will use the specified custom converter
-when mapping between SomeObject and the int primitive type. Note that
-Dozer will also use the custom converter when mapping between `SomeObject`
-and the `Integer` wrapper type.
+=== 支持原生类型
+你可以定义一个自定义转化器针对原生类型。只需要在定义自定义转化器映射的时候使用原生类型的包装类。如下的例子中， Dozer 将使用自定义转化器在SomeObject和int原生类型之间。
+注意 Dozer 也将使用该转化器作用于 `SomeObject` 和 `Integer` 的包装类型。
 
 [source,xml,prettyprint]
 ----
@@ -208,12 +180,10 @@ and the `Integer` wrapper type.
 </converter>
 ----
 
-=== Configurable Custom Converters
-You can define a custom converter, which can be configured from mappings
-via configuration parameter. In this case you should implement
-`ConfigurableCustomConverter` interface instead of usual `CustomConverter`.
-Configurable converter has additional attribute provided in runtime -
-param. Parameter is provided using `custom-converter-param` attribute.
+=== 配置自定义转化器
+你可以在定义一个自定义转化器时候，在映射中配置参数。在这个例子中你将实现
+`ConfigurableCustomConverter` 接口而不是通常的 `CustomConverter` 类。
+可配置的转化器包含额外的运行时参数来提供的属性。参数通过使用`custom-converter-param`属性进行提供。
 
 [source,xml,prettyprint]
 ----
@@ -227,9 +197,8 @@ param. Parameter is provided using `custom-converter-param` attribute.
 </mapping>
 ----
 
-Configurable custom converter should be used when you have similar
-behaviour in many cases, which can be parametrized, but the number of
-combinations is too high to do simple Custom Converter subclassing.
+可配置的自定义转化器只有当你在许多例子中有相似的行为的时候通过参数化的方法使用。
+从而简化组合使用自定义转化器子类的数目。
 
 [source,java,prettyprint]
 ----
@@ -269,17 +238,11 @@ public class MathOperationConverter implements ConfigurableCustomConverter {
 }
 ----
 
-=== New Custom Converter API
-While providing great deal of flexibility Custom Converter API described
-above is written on fairly low level of abstraction. This results in
-converter, which code is difficult to understand and to reuse in other
-ways than plugging into Dozer mapping. However it is not uncommon
-situation when the same conversion logic should be called from a place
-other than bean mapping framework.
-version of Dozer gets shipped with new - cleaner API for defining
-custom converter, which gives you more obvious API while taking away
-certain part of control of the executions flow. The following example
-demonstrates simple, yet working converter using new API.
+=== 新的自定义转化器API
+然而上面所提供的大量灵活的自定义转化器API都是使用相当低级的抽象。这将导致转化器很难以被理解和在其他Dozer映射注入方式下重用。
+然而通常在相同的场景中相同的转化逻辑将被应用而不是整个映射框架级别的。
+新版本的 Dozer 提供了新的干净 API 来处理自定义转化器，将给你提供更加明显的API来处理特定的执行流程中的控制部分 。
+如下的例子中展示一个简单例子，新版本的API来使用转化器。
 
 [source,java,prettyprint]
 ----
@@ -313,17 +276,12 @@ public class NewDozerConverter extends DozerConverter<String, Boolean> {
 }
 ----
 
-Note that Java 5 Generics are supported and you do not need to cast
-source object to desired type as previously.
+注意 支持Java 5 泛型，因此你不需要像之前一样转化原始对象到目标对象。
 
-=== Data Structure Conversions
-There are cases where it is required to perform programmatic data
-structure conversion, say copy each odd element in a list as map key,
-but each even as map value. In this case it is needed to define
-transformation of the structure while relying on usual Dozer mapping
-support for individual values. For this purposes it is possible to use
-`MapperAware` interface, which injects current mapper instance inside
-custom converter.
+=== 数据结构转化
+在一些场景中需要执行程序化数据结构的转化，例如复制每个列表中的奇数号元素作为map中的键，偶数号元素作为值。
+在这个例子中仍然在定义结构转化中需要依赖于通常的Dozer对每个值映射。
+为了这个目的，可能需要使用`MapperAware`接口，这将在自定义转化器中注入当前的映射实例。
 
 [source,java,prettyprint]
 ----

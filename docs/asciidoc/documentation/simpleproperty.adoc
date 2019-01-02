@@ -1,13 +1,11 @@
-== Basic Property Mapping
-=== Implicit Property Mapping (bi-directional)
-Matching field names are automatically handled by Dozer.
+== 基础属性映射
+=== 隐式的属性映射 (双向)
+匹配域名称将被Dozer自动处理。
 
-*Properties that are of the same name do not need to be specified in the
-mapping xml file.*
+*包含相同名字的属性不需要在映射的xml文件中进行定义。*
 
-=== Simple Mappings (bi-directional)
-We will start off simple. If you have two properties with different
-names they can be mapped as such:
+=== 简单映射 (双向)
+我们从简单的开始。如果你包含两个不同名称的属性，可以如下进行映射:
 
 [source,xml,prettyprint]
 ----
@@ -17,36 +15,30 @@ names they can be mapped as such:
 </field>
 ----
 
-=== Data type conversion
-Data type coversion is performed automatically by the Dozer mapping
-engine. Currently, Dozer supports the following types of conversions:
-(these are all bi-directional)
+=== 数据类型转化
+数据类型转化将被Dozer映射引擎自动进行。当前Dozer支持如下类型的转化：(他们都是双向的)
 
-* Primitive to Primitive Wrapper
-* Primitive to Custom Wrapper
-* Primitive Wrapper to Primitive Wrapper
-* Primitive to Primitive
-* Complex Type to Complex Type
-* String to Primitive
-* String to Primitive Wrapper
-* String to Complex Type if the Complex Type contains a String
-constructor
-* String to Map
-* Collection to Collection
-* Collection to Array
-* Map to Complex Type
-* Map to Custom Map Type
-* Enum to Enum
-* Each of these can be mapped to one another: java.util.Date,
+* 原生类型到原生类型的封装
+* 原生类型到自定义封装
+* 原生类型的封装到原生类型的封装
+* 原生类型到原生类型
+* 复杂类型到复杂类型
+* 字符串到原生类型
+* 字符串到原生类型封装
+* 字符串到原生类型如果原生类型包含一个字符串构造函数
+* 字符串到映射
+* 集合到集合
+* 集合到数组
+* 列表到数组类型
+* 列表到自定义映射类型
+* 枚举到枚举
+* 下面的任何一个都可以映射成其他一个: java.util.Date,
 java.sql.Date, java.sql.Time, java.sql.Timestamp, java.util.Calendar,
 java.util.GregorianCalendar
-* String to any of the supported Date/Calendar Objects.
-* Objects containing a toString() method that produces a long
-representing time in (ms) to any supported Date/Calendar object.
+* 字符串到任何其他支持 Date/Calendar 类型的对象
+* 包含可以产生一个长整数格式毫秒时间的toString()方法的对象到任何支持 Date/Calendar 的对象
 
-=== Recursive Mapping (bi-directional)
-Dozer supports full Class level mapping recursion. If you have any
-complex types defined as field level mappings in your object, Dozer will
-search the mappings file for a Class level mapping between the two
-Classes that you have mapped. If you do not have any mappings, it will
-only map fields that are of the same name between the complex types.
+=== 递归映射 (双向)
+Dozer支持全类型级别的递归映射。如果在你的项目中包含有任何复杂的类型域级别映射，
+Dozer将搜索类级别的映射在这两个类之间的映射文件中。
+如果你没有包含任何映射。它仅仅映射复杂类型中包含相同名称的域。

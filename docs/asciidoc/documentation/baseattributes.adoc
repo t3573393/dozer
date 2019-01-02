@@ -1,11 +1,8 @@
-== Inheritance Mapping
-=== Reducing Mapping XML when using base class attributes
-*Properties that are of the same name do not need to be specified in the
-mapping xml file unless hints are needed.*
+== 继承式映射
+=== 当使用基础类属性的时候减少映射XML文件的工作量
+*包含相同名称的属性不需要在映射XML文件中进行定义除非需要使用暗示。*
 
-If you are mapping subclasses that also have have base class attributes
-requiring mapping XML, you might be inclined to reproduce base class
-field maps in each subclass mapping element, like the following example:
+如果你映射的子类包含有相同的需要XML映射的基础类属性，你可能倾向于在每个子类的映射元素中重复这些类睡醒，如下面的例子:
 
 [source,xml,prettyprint]
 ----
@@ -37,14 +34,10 @@ field maps in each subclass mapping element, like the following example:
 </mapping>
 ----
 
-In the previous mapping, some of the fields were from a common base
-class, but you had to reproduce them into each mapping of the sub
-classes.
+在上面的映射中，一些属性来自于相同的基础类，但是你需要在每个子映射文件中重复它们。
 
-However, a better way to do it would be to map the base class
-individually. This can be done for each base class (in the case of a
-larger heirarchy). Assuming the base class name, below is the refactored
-mapping xml:
+然而一个更好的实现方式是独立的映射这些基础类。这可以通过每个基础类型进行映射做到（在大型的层级结构中）。
+假定基础类名，如下是重构之后的xml映射文件:
 
 [source,xml,prettyprint]
 ----
@@ -74,25 +67,20 @@ mapping xml:
 </mapping>
 ----
 
-The following images explain some of the different scenarios dozer
-handles. Each diagram shows two mapped class hierarchies and existing
-relations, which Dozer recognizes and maps.
+下图展示了一些不同场景下的dozer处理器。每个图标显示了被Dozer识别和映射的两个类继承层级和已经存在的关系。
 
 image:../images/scenario1.jpg[scenario1]
 
-Scenario 1 shows that if you map SubClass to ClassPrime all attributes
-from SuperClass -> ClassPrime will be mapped as well.
+场景1显示如果你映射 SubClass 到 ClassPrime ，所有的来自于SuperClass的属性，将同样被应用到 ClassPrime 映射中。
 
 image:../images/scenario2.jpg[scenario2]
 
-Scenario 2 shows that Dozer has no limitations on the inheritance depth
-it analyzes to find parent mappings.
+场景2显示了Dozer没有限制继承的深度，它能够分析找到父映射。
 
 image:../images/scenario3.jpg[scenario3]
 
-Scenario 3 shows that it is possible to map two collections with
-different subctypes of the same parent type. This is done by providing
-hints to the collection mapping, describing all potential subclasses.
+场景3显示可以映射两个包含相同父类型不同子类集合，这可以通过在集合映射中提供暗示的方法实现，
+描述所有潜在的子类。
 
 [source,xml,prettyprint]
 ----

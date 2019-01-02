@@ -1,7 +1,6 @@
-== Custom Create Methods
-You can configure Dozer to use custom static create methods to create
-new instances of destination data objects during the mapping process.
-This can either be set at the field level or class level.
+== 自定义创建方法
+你可以配置 Dozer 在映射阶段使用自定义的静态创建方法来创建目标对象的新实例。
+这不仅仅可以在域级别也可以在类级别。
 
 [source,xml,prettyprint]
 ----
@@ -17,7 +16,7 @@ This can either be set at the field level or class level.
 </mapping>
 ----
 
-Specifying a custom create method at the Field level....
+定义一个自定义创建方法在域级别....
 
 [source,xml,prettyprint]
 ----
@@ -31,9 +30,8 @@ Specifying a custom create method at the Field level....
 </mapping>
 ----
 
-It is also possible to reference different class with static factory
-method. This is done by providing fully qualified type name and method
-name separated by dot.
+这个也可以引用到不同的静态工厂类的方法。
+这通过提供使用点号分割的完整的限定类型名称和方法名称来实现。
 
 [source,xml,prettyprint]
 ----

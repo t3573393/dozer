@@ -1,69 +1,59 @@
-== Configuration
-Dozer configuration properties can be customized via an optional Dozer
-properties file. By default, Dozer will look for a file named
-dozer.properties to load configuration properties. If a properties file
-is not found or specified, default values will be used.
+== 配置
+Dozer 配置属性可以通过一个可选的 Dozer 属性文件进行自定义。缺省情况，Dozer 将查看一个命名为dozer.properties的文件来载入配置属性。如果一个属性文件不能被找到或者被定义，缺省值将被使用。
 
-Dozer is distributed with an example dozer.properties file in /config
-that shows the various options. Just put the example file in your
-classpath and customize it.
+Dozer 发布中包含一个例子dozer.properties 文件，将显示各种不同的选项。只需要把例子中的文件放到你的classpath，并自定义它。
 
-An alternative Dozer properties file can be specified via the
-dozer.configuration system property. ex)
+一个额外的 Dozer 属性文件可以通过dozer.configuration system property. 等)进行定义，例如：
 -Ddozer.configuration=someDozerConfigurationFile.properties
 
 [cols="5*", options="header"]
-.Dozer Configuration Properties
+.Dozer 配置属性
 |===
-|Property Name
-|Description
-|Valid Values
-|Default
+|属性名称
+|描述
+|可用值
+|缺省值
 |
 
 |dozer.el.enabled
-|Specifies whether during Xml mappings parsing Dozer will recognize EL expressions.
+|定义是否在XML 映射解析中Dozer 将识别EL 表达式。
 |true
 |false
 |false
 
 |dozer.cache.converter-by-dest-type-maxsize
-|Specifies the max size for one of Dozers internal caches.
+|定义最大的一个内部Dozers缓存的大小
 |0 - Long.MAX_VALUE
 |10000
 |
 
 |dozer.cache.super-type-maxsize
-|Specifies the max size for one of Dozers internal caches
+|定义最大的一个内部Dozers缓存的大小
 |0 - Long.MAX_VALUE
 |10000
 |
 
 |dozer.beans.proxy-resolver-bean
-|Specifies implementation of DozerProxyResolver to be used
-|Valid class name
-|Default implementation
+|定义可被使用的 DozerProxyResolver 实现类
+|正确的类名
+|缺省的实现值
 |
 
 |dozer.beans.class-loader-bean
-|Specifies implementation of DozerClassLoader to be used
-|Valid class name
-|Default implementation
+|定义可被使用的 DozerClassLoader 实现类
+|正确的类名
+|缺省的实现值
 |
 |=======================================================================
 
-=== Debugging Initialization
-One time Dozer initialization information can be optionally sent to
-System.out to help with debugging.
+=== 调试初始化
+一旦 Dozer 初始化信息可以被可选的发送到 System.out 来帮助调试。
 
-To enable this additional debugging info, set the dozer.debug system
-property.
+为了启用这个附加的调试信息，可以设置 dozer.debug 系统属性。
 
 ex) -Ddozer.debug=true
 
-Types of information that will be sent to System.out are loading of
-configuration file, loading of custom xml mapping files, version info,
-classloader info
+各种信息将被发送到System.out，包括载入的配置信息，自定xml的映射文件，版本信息，classloader 信息
 
 [source,prettyprint]
 ----
